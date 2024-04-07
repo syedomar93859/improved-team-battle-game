@@ -1,20 +1,24 @@
-/**
- *  Arfa Raja, Nethanya Dhaipule, Syed Omar
- *  March 20, 2024
- *  T12
- */
 package ca.ucalgary.groupprojectgui;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Game {
+import java.io.IOException;
+
+public class Game extends Application {
     public Game() {
     }
 
+    public static final String version = "1.0";
+
     /**
-     * Method to run the menu
-     *
+     * The main method of the application.
+     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
+        launch(args);
         System.out.println("""
         Introduction:
         Your team has entered an undiscovered cave entrance and goes inside to take a safe and short rest in the night. All of you have been travelling on a long voyage 
@@ -35,5 +39,18 @@ public class Game {
         BATTLE ENGAGE!""");
         Menu.menuLoop();
     }
-}
 
+    /**
+     * Starts the JavaFX application by initializing the stage and loading the main FXML layout.
+     * @param stage The primary stage of the application.
+     * @throws IOException If an error occurs while loading the FXML layout.
+     */
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
+        stage.setTitle("ENTER GAME NAME HERE");
+        stage.setScene(scene);
+        stage.show();
+    }
+}
