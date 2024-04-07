@@ -7,7 +7,7 @@ package ca.ucalgary.groupprojectgui;
 
 
 
-class Swordsman extends java.lang.Character {
+class Swordsman extends Character {
 
     /**
      * Constructs a Swordsman object with the specified attributes.

@@ -6,7 +6,7 @@
 package ca.ucalgary.groupprojectgui;
 
 
-class Marksman extends java.lang.Character {
+class Marksman extends Character {
 
     /**
      * Constructs a Marksman object with the specified attributes.

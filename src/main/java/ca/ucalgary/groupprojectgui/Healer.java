@@ -6,7 +6,7 @@
 package ca.ucalgary.groupprojectgui;
 
 
-class Healer extends java.lang.Character {
+class Healer extends Character {
 
     /**
      * Constructs a Healer object with the specified attributes.

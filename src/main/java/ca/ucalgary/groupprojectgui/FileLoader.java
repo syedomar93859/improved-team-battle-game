@@ -20,7 +20,7 @@ public class FileLoader {
      * Reads a file with characters and teams
      *
      */
-    public static void load(File file, List<java.lang.Character> characterList, Map<String, List<java.lang.Character>> teams) {
+    public static void load(File file, List<Character> characterList, Map<String, List<Character>> teams) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -40,7 +40,7 @@ public class FileLoader {
      * Loads the characters from the file
      *
      */
-    private static void loadCharacters(BufferedReader br, List<java.lang.Character> characterList) throws IOException {
+    private static void loadCharacters(BufferedReader br, List<Character> characterList) throws IOException {
         String line;
         while ((line = br.readLine()) != null && !line.equals("")) {
             String[] parts = line.split(",");
@@ -49,7 +49,7 @@ public class FileLoader {
             int hp = Integer.parseInt(parts[2]); // reads the hp
             int atk = Integer.parseInt(parts[3]); // reads the atk
             int def = Integer.parseInt(parts[4]); // reads the def
-            java.lang.Character character = java.lang.Character.createFileCharacter(name, hp, atk, def, type); // creates character
+            Character character = Character.createFileCharacter(name, hp, atk, def, type); // creates character
             characterList.add(character); // adds character to characterList
         }
     }
@@ -58,15 +58,15 @@ public class FileLoader {
      * Loads the teams from the file
      *
      */
-    private static void loadTeams(BufferedReader br, Map<String, List<java.lang.Character>> teams, List<java.lang.Character> characterList) throws IOException {
+    private static void loadTeams(BufferedReader br, Map<String, List<Character>> teams, List<Character> characterList) throws IOException {
         String line;
         while ((line = br.readLine()) != null && !line.equals("")) {
             String[] parts = line.split(",");
             String teamName = parts[0]; // reads the team name
             String[] memberNames = parts[1].split(";"); // reads the member names
-            List<java.lang.Character> teamMembers = new ArrayList<>();
+            List<Character> teamMembers = new ArrayList<>();
             for (String memberName : memberNames) {
-                for (java.lang.Character character : characterList) {
+                for (Character character : characterList) {
                     if (character.getName().equals(memberName)) {
                         teamMembers.add(character);
                         break;

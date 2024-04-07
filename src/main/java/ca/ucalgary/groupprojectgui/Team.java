@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Team {
     private String name; // name of team
-    private List<java.lang.Character> members; // members in team from list
+    private List<Character> members; // members in team from list
 
     /**
      * Constructs a Team object
@@ -27,7 +27,7 @@ public class Team {
     /**
      * adds member to team
      */
-    public void addMember(java.lang.Character character) {
+    public void addMember(Character character) {
         this.members.add(character); // adds character to memberlist
     }
 
@@ -47,7 +47,7 @@ public class Team {
      *
      * @return the members of the team.
      */
-    public List<java.lang.Character> getMembers() {
+    public List<Character> getMembers() {
         return this.members; // gets name of members in team
     }
 
@@ -59,9 +59,9 @@ public class Team {
      *
      * return the Team object
      */
-    public static Team createTeam(String teamName, List<java.lang.Character> teamMembers) {
+    public static Team createTeam(String teamName, List<Character> teamMembers) {
         Team newTeam = new Team(teamName);
-        for (java.lang.Character member : teamMembers) {
+        for (Character member : teamMembers) {
             newTeam.addMember(member);
         }
         System.out.println("Team " + teamName + " has been created.");

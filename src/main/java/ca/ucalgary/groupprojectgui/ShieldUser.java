@@ -8,7 +8,7 @@ package ca.ucalgary.groupprojectgui;
 
 
 
-class ShieldUser extends java.lang.Character {
+class ShieldUser extends Character {
 
     /**
      * Constructs a ShieldUser object with the specified attributes.

@@ -55,8 +55,8 @@ public class Menu {
      */
     public static void menuLoop() {
 
-        ArrayList<java.lang.Character> characterList = new ArrayList<>(); // list of all characters
-        Map<String, List<java.lang.Character>> teams = new HashMap<>(); // list of all teams with characters
+        ArrayList<Character> characterList = new ArrayList<>(); // list of all characters
+        Map<String, List<Character>> teams = new HashMap<>(); // list of all teams with characters
         System.out.println(optMessage);
         String choice = scanner.nextLine();
 
@@ -74,12 +74,12 @@ public class Menu {
                     } else {
                         System.out.println("Enter the team's name:"); // asks for team name
                         String teamName = scanner.nextLine();
-                        List<java.lang.Character> team = new ArrayList<>();
+                        List<Character> team = new ArrayList<>();
                         String addMore;
                         do { // asks about adding initial character
                             System.out.println("Enter the name of the character you want to add to the team:");
                             String characterName = scanner.nextLine();
-                            for (java.lang.Character character : characterList) {
+                            for (Character character : characterList) {
                                 if (character.getName().equals(characterName)) {
                                     team.add(character); // adds character to team list
                                     break;
@@ -117,7 +117,7 @@ public class Menu {
                     int def = scanner.nextInt();
 
                     // creates character Object
-                    java.lang.Character newCharacter;
+                    Character newCharacter;
 
                     switch (type) {
                         // create HEALER object
@@ -160,7 +160,7 @@ public class Menu {
                     // updates characters atk
                     System.out.println("Enter the new attack value:");
                     int newAtk = scanner.nextInt();
-                    for (java.lang.Character character : characterList) {
+                    for (Character character : characterList) {
                         if (character.getName().equals(name)) {
                             character.setAtk(newAtk);
                             System.out.println("Character " + name + "'s attack has been updated.");
@@ -176,7 +176,7 @@ public class Menu {
                     // updates characters def
                     System.out.println("Enter the new defense value:");
                     int newDef = scanner.nextInt();
-                    for (java.lang.Character character : characterList) {
+                    for (Character character : characterList) {
                         if (character.getName().equals(name)) {
                             character.setDef(newDef);
                             System.out.println("Character " + name + "'s defense has been updated.");
@@ -192,7 +192,7 @@ public class Menu {
                     // updates characters hp
                     System.out.println("Enter the new health value:");
                     int NewHp = scanner.nextInt();
-                    for (java.lang.Character character : characterList) {
+                    for (Character character : characterList) {
                         if (character.getName().equals(name)) {
                             character.setHp(NewHp);
                             System.out.println("Character " + name + "'s health has been updated.");
@@ -208,7 +208,7 @@ public class Menu {
                     // updates characters type
                     System.out.println("Choose the character's type (HEALER, MARKSMAN, SWORDSMAN, SHIELDUSER):");
                     String newType = scanner.nextLine();
-                    for (java.lang.Character character : characterList) {
+                    for (Character character : characterList) {
                         if (character.getName().equals(name)) {
                             character.setType(CharacterType.valueOf(newType));
                             System.out.println("Character " + name + "'s type has been updated.");
@@ -259,7 +259,7 @@ public class Menu {
                     System.out.println("Enter the character's name:");
                     name = scanner.nextLine();
 
-                    for (java.lang.Character character : characterList) {
+                    for (Character character : characterList) {
                         if (character.getName().equals(name)) {
                             int y = Battlefield.CalculateDamage(character);
                             System.out.println("The Character Damage is" + y);
@@ -294,7 +294,7 @@ public class Menu {
     /**
      *  method that saves the characterList and teams calling to FileSaver
      */
-    private static void save(List<java.lang.Character> characterList, Map<String, List<java.lang.Character>> teams) {
+    private static void save(List<Character> characterList, Map<String, List<Character>> teams) {
         String filename;
         File file;
         do {
@@ -313,7 +313,7 @@ public class Menu {
     /**
      *  method that saves the characterList and teams calling to FileLoader
      */
-    private static void load(List<java.lang.Character> characterList, Map<String, List<java.lang.Character>> teams) {
+    private static void load(List<Character> characterList, Map<String, List<Character>> teams) {
         String filename;
         File file;
         do {
