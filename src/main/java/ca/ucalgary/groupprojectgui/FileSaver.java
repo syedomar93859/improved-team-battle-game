@@ -22,9 +22,8 @@ public class FileSaver {
     public static boolean save(File file, List<Character> characterList, Map<String, List<Character>> teams) {
         try (FileWriter fw = new FileWriter(file)) {
             // Save characters
-            fw.write("Characters\n"); // Write a header to distinguish character data
+            fw.write("Characters\n");
             for (Character character : characterList) {
-                // Write each character's details in CSV format: name,type,hp,atk,def
                 fw.write(String.format("%s,%s,%d,%d,%d\n",
                         character.getName(),
                         character.getType().toString(),
@@ -34,11 +33,11 @@ public class FileSaver {
             }
 
             // Save teams
-            fw.write("\nTeams\n"); // Write a header to distinguish team data
+            fw.write("\nTeams\n"); // Header to distinguish team data
             for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
                 // Iterate over each team entry in the teams map
-                fw.write(entry.getKey() + ","); // Write the team name followed by a comma
-                List<Character> teamMembers = entry.getValue(); // Get the list of team members
+                fw.write(entry.getKey() + ","); // write team names
+                List<Character> teamMembers = entry.getValue(); // get list of team members
                 for (Character member : teamMembers) {
                     fw.write(member.getName() + ";");
                 }

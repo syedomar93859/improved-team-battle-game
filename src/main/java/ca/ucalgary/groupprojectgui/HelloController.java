@@ -1,14 +1,125 @@
 package ca.ucalgary.groupprojectgui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
+
+    private File file;
+    private Stage stage;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private MenuItem load;
+
+    @FXML
+    private MenuItem save;
+
+    @FXML
+    private MenuItem quit;
+
+    @FXML
+    private MenuItem about;
+
+    @FXML
+    private TextField alertDisplay;
+    private List<Character> characterList = new ArrayList<>();
+    private Map<String, List<Character>> teams = new HashMap<>();
+
+    @FXML
+    private void initialize()
+    {
+
     }
+
+    @FXML
+    private void handleLoad() {
+        // Create a file chooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open File");
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            // Call the FileLoader class's load method
+            FileLoader.load(selectedFile, characterList, teams);
+            alertDisplay.setText("File loaded successfully!");
+            alertDisplay.setStyle("-fx-text-fill: blue;");
+            this.file = selectedFile; // Set the file field
+        } else {
+            // Show an error message if no file was selected
+            alertDisplay.setText("Failed to load file or invalid file format.");
+            alertDisplay.setStyle("-fx-text-fill: red;");
+
+        }
+
+    }
+
+    @FXML
+    public void handleSaveFile() {
+        if (teams != null && file != null && characterList !=null) {
+            FileSaver.save(file, characterList, teams);
+            alertDisplay.setText("Success! File saved");
+            alertDisplay.setStyle("-fx-text-fill: blue;");
+        } else {
+            alertDisplay.setText("No file loaded to save. Please save new file.");
+            alertDisplay.setStyle("-fx-text-fill: red");
+        }
+    }
+
+    @FXML
+    public void handleSaveAsFile() {
+        if (teams != null && file != null && characterList !=null) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save File");
+            File selectedFile = fileChooser.showSaveDialog(stage);
+            if (selectedFile != null) {
+               if(FileSaver.save(file, characterList, teams))
+               {
+                   alertDisplay.setText("Success! File Saved");
+                   alertDisplay.setStyle("-fx-text-fill: blue;");
+                   this.file = selectedFile;
+               }
+            }
+        }
+        else
+        {
+            alertDisplay.setText("Error! No game loaded to save.");
+            alertDisplay.setStyle("-fx-text-fill: red;");
+        }
+    }
+
+    @FXML
+    private void handleQuit()
+    {
+        System.exit(0);
+    }
+
+
+    @FXML
+    private void about()
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("Message");
+        alert.setContentText("Author: Nethanya Dhaiphule, Arfa Raja, Syed Omar\nVersion: v1.0\nThis is a ...description");
+        alert.showAndWait();
+    }
+
+
+
+
+
+
+
+
 }
+
