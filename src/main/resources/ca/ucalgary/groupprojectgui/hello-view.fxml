@@ -8,13 +8,12 @@
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.groupprojectgui.HelloController">
     <children>
-        <TitledPane animated="false" prefWidth="974.0" text="Demo 3" />
         <MenuBar prefWidth="900.0" VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem fx:id="load" mnemonicParsing="false" text="Load" />
-                        <MenuItem fx:id="save" mnemonicParsing="false"  text="Save" />
+                        <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" text="SaveAs" />
                         <MenuItem fx:id="quit" mnemonicParsing="false" text="Quit" />
                     </items>
