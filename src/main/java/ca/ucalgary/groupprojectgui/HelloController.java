@@ -2,6 +2,7 @@ package ca.ucalgary.groupprojectgui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -128,44 +129,68 @@ public class HelloController {
      */
     @FXML
     private void createCharacter() {
-            String name = createName.getText();
-            int hp = Integer.parseInt(createHp.getText());
-            int atk = Integer.parseInt(createAtk.getText());
-            int def = Integer.parseInt(createDef.getText());
-            CharacterType type = CharacterType.valueOf((createType.getText()));
-            Character newCharacter;
+        String name = createName.getText();
+        int hp = Integer.parseInt(createHp.getText());
+        int atk = Integer.parseInt(createAtk.getText());
+        int def = Integer.parseInt(createDef.getText());
+        CharacterType type = CharacterType.valueOf((createType.getText()));
+        Character newCharacter;
 
-            switch (type) {
-                // create HEALER object
-                case HEALER:
-                    newCharacter = new Healer(name, hp, atk, def);
-                    characterList.add(newCharacter);
-                    aboutMember.setText(characterList.toString());
-                    break;
+        switch (type) {
+            // create HEALER object
+            case HEALER:
+                newCharacter = new Healer(name, hp, atk, def);
+                characterList.add(newCharacter);
+                aboutMember.setText(characterList.toString());
+                break;
 
-                // create MARKSMAN object
-                case MARKSMAN:
-                    newCharacter = new Marksman(name, hp, atk, def);
-                    characterList.add(newCharacter);
-                    aboutMember.setText(characterList.toString());
-                    break;
+            // create MARKSMAN object
+            case MARKSMAN:
+                newCharacter = new Marksman(name, hp, atk, def);
+                characterList.add(newCharacter);
+                aboutMember.setText(characterList.toString());
+                break;
 
-                // create SWORDSMAN object
-                case SWORDSMAN:
-                    newCharacter = new Swordsman(name, hp, atk, def);
-                    characterList.add(newCharacter);
-                    aboutMember.setText(characterList.toString());
-                    break;
+            // create SWORDSMAN object
+            case SWORDSMAN:
+                newCharacter = new Swordsman(name, hp, atk, def);
+                characterList.add(newCharacter);
+                aboutMember.setText(characterList.toString());
+                break;
 
-                // create SHIELDUSER object
-                case SHIELDUSER:
-                    newCharacter = new ShieldUser(name, hp, atk, def);
-                    characterList.add(newCharacter);
-                    aboutMember.setText(characterList.toString());
-                    break;
-            }
+            // create SHIELDUSER object
+            case SHIELDUSER:
+                newCharacter = new ShieldUser(name, hp, atk, def);
+                characterList.add(newCharacter);
+                aboutMember.setText(characterList.toString());
+                break;
         }
     }
+
+    @FXML
+    private TextField teamNameText;
+    @FXML
+    private TextField teamCharacText;
+    @FXML
+    private Button createTeamButton;
+    @FXML
+    private TextArea aboutTeam;
+
+    @FXML
+    private void createTeamGUI(){
+        String teamName = teamNameText.getText();
+        List<Character> team = new ArrayList<>();
+        String characterName = teamCharacText.getText();
+        for (Character character : characterList) {
+            if (character.getName().equals(characterName)) {
+                team.add(character); // adds character to team list
+                }
+        Team newTeam = Team.createTeam(teamName, team); // creates a new Team object
+        teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap
+        }
+        aboutTeam.setText(teams.toString());
+    }
+}
 
 
 
