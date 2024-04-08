@@ -35,8 +35,7 @@ public class HelloController {
     private Map<String, List<Character>> teams = new HashMap<>();
 
     @FXML
-    private void initialize()
-    {
+    private void initialize() {
 
     }
 
@@ -64,7 +63,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveFile() {
-        if (teams != null && file != null && characterList !=null) {
+        if (teams != null && file != null && characterList != null) {
             FileSaver.save(file, characterList, teams);
             alertDisplay.setText("Success! File saved");
             alertDisplay.setStyle("-fx-text-fill: blue;");
@@ -76,7 +75,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveAsFile() {
-        if (teams != null && file != null && characterList !=null) {
+        if (teams != null && file != null && characterList != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save File");
             File selectedFile = fileChooser.showSaveDialog(stage);
@@ -177,18 +176,60 @@ public class HelloController {
     private TextArea aboutTeam;
 
     @FXML
-    private void createTeamGUI(){
+    private void createTeamGUI() {
         String teamName = teamNameText.getText();
         List<Character> team = new ArrayList<>();
         String characterName = teamCharacText.getText();
         for (Character character : characterList) {
             if (character.getName().equals(characterName)) {
                 team.add(character); // adds character to team list
-                }
-        Team newTeam = Team.createTeam(teamName, team); // creates a new Team object
-        teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap
+            }
+            Team newTeam = Team.createTeam(teamName, team); // creates a new Team object
+            teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap
         }
         aboutTeam.setText(teams.toString());
+    }
+
+    @FXML
+    private TextField editName;
+    @FXML
+    private TextField editAttribute;
+    @FXML
+    private TextField editNew;
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private void editCharacterGUI() {
+        String name = editName.getText();
+        String attribute = editAttribute.getText();
+        String newValue = editNew.getText();
+
+        for (Character character : characterList) {
+            if (character.getName().equals(name)) {
+                switch (attribute) {
+                    case "Atk":
+                        int newAtk = Integer.parseInt(newValue);
+                        character.setAtk(newAtk);
+                        aboutMember.setText(characterList.toString());
+                        aboutTeam.setText(teams.toString());
+                    case "Def":
+                        int newDef = Integer.parseInt(newValue);
+                        character.setDef(newDef);
+                        aboutMember.setText(characterList.toString());
+                        aboutTeam.setText(teams.toString());
+                    case "Hp":
+                        int newHp = Integer.parseInt(newValue);
+                        character.setHp(newHp);
+                        aboutMember.setText(characterList.toString());
+                        aboutTeam.setText(teams.toString());
+                    case "Type":
+                        character.setType(CharacterType.valueOf(newValue));
+                        aboutMember.setText(characterList.toString());
+                        aboutTeam.setText(teams.toString());
+                }
+            }
+        }
     }
 }
 

@@ -127,7 +127,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x24" />
                             </textFill>
                         </Label>
-                        <TextField layoutX="122.0" layoutY="498.0" prefHeight="22.0" prefWidth="96.0" />
+                        <TextField fx:id="editName" layoutX="122.0" layoutY="498.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="54.0" layoutY="501.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Name" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x133" />
@@ -136,7 +136,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x233" />
                             </textFill>
                         </Label>
-                        <TextField layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
+                        <TextField fx:id="editAttribute" layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="54.0" layoutY="537.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Attribute" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x1312" />
@@ -145,7 +145,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2312" />
                             </textFill>
                         </Label>
-                        <TextField layoutX="122.0" layoutY="569.0" prefHeight="22.0" prefWidth="96.0" />
+                        <TextField fx:id="editNew" layoutX="122.0" layoutY="569.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="50.0" layoutY="572.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="New Value" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x1313" />
@@ -156,7 +156,7 @@
                         </Label>
                   <Button fx:id="createCharac" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#createCharacter" prefHeight="26.0" prefWidth="96.0" text="Create" />
                   <Button fx:id="createTeamButton" layoutX="122.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#createTeamGUI" prefHeight="26.0" prefWidth="96.0" text="Create" />
-                  <Button layoutX="122.0" layoutY="605.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="96.0" text="Edit" />
+                  <Button fx:id="editButton" layoutX="122.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#editCharacterGUI" prefHeight="26.0" prefWidth="96.0" text="Edit" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">

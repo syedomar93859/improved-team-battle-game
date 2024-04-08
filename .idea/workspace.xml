@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="be able to create and view characters">
+    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="be able to create and view teams">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ca/ucalgary/groupprojectgui/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ca/ucalgary/groupprojectgui/hello-view.fxml" afterDir="false" />
@@ -116,7 +116,7 @@
       <workItem from="1712532858020" duration="304000" />
       <workItem from="1712564462904" duration="51000" />
       <workItem from="1712564521073" duration="3521000" />
-      <workItem from="1712617942677" duration="309000" />
+      <workItem from="1712617942677" duration="1125000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -142,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712567799977</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="be able to create and view teams">
+      <option name="closed" value="true" />
+      <created>1712618285677</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712618285677</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +170,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="be able to create and view characters" />
-    <option name="LAST_COMMIT_MESSAGE" value="be able to create and view characters" />
+    <MESSAGE value="be able to create and view teams" />
+    <option name="LAST_COMMIT_MESSAGE" value="be able to create and view teams" />
   </component>
 </project>
