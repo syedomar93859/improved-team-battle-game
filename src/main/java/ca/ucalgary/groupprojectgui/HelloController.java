@@ -1,9 +1,7 @@
 package ca.ucalgary.groupprojectgui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -82,31 +80,26 @@ public class HelloController {
             fileChooser.setTitle("Save File");
             File selectedFile = fileChooser.showSaveDialog(stage);
             if (selectedFile != null) {
-               if(FileSaver.save(file, characterList, teams))
-               {
-                   alertDisplay.setText("Success! File Saved");
-                   alertDisplay.setStyle("-fx-text-fill: blue;");
-                   this.file = selectedFile;
-               }
+                if (FileSaver.save(file, characterList, teams)) {
+                    alertDisplay.setText("Success! File Saved");
+                    alertDisplay.setStyle("-fx-text-fill: blue;");
+                    this.file = selectedFile;
+                }
             }
-        }
-        else
-        {
+        } else {
             alertDisplay.setText("Error! No game loaded to save.");
             alertDisplay.setStyle("-fx-text-fill: red;");
         }
     }
 
     @FXML
-    private void handleQuit()
-    {
+    private void handleQuit() {
         System.exit(0);
     }
 
 
     @FXML
-    private void about()
-    {
+    private void about() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("Message");
@@ -114,12 +107,65 @@ public class HelloController {
         alert.showAndWait();
     }
 
+    // character attributes
+    @FXML
+    private TextField createName;
+    @FXML
+    private TextField createHp;
+    @FXML
+    private TextField createAtk;
+    @FXML
+    private TextField createDef;
+    @FXML
+    private TextField createType;
+    @FXML
+    private Button createCharac;
+    @FXML
+    private TextArea aboutMember;
+
+    /**
+     * Create A Character
+     */
+    @FXML
+    private void createCharacter() {
+            String name = createName.getText();
+            int hp = Integer.parseInt(createHp.getText());
+            int atk = Integer.parseInt(createAtk.getText());
+            int def = Integer.parseInt(createDef.getText());
+            CharacterType type = CharacterType.valueOf((createType.getText()));
+            Character newCharacter;
+
+            switch (type) {
+                // create HEALER object
+                case HEALER:
+                    newCharacter = new Healer(name, hp, atk, def);
+                    characterList.add(newCharacter);
+                    aboutMember.setText(characterList.toString());
+                    break;
+
+                // create MARKSMAN object
+                case MARKSMAN:
+                    newCharacter = new Marksman(name, hp, atk, def);
+                    characterList.add(newCharacter);
+                    aboutMember.setText(characterList.toString());
+                    break;
+
+                // create SWORDSMAN object
+                case SWORDSMAN:
+                    newCharacter = new Swordsman(name, hp, atk, def);
+                    characterList.add(newCharacter);
+                    aboutMember.setText(characterList.toString());
+                    break;
+
+                // create SHIELDUSER object
+                case SHIELDUSER:
+                    newCharacter = new ShieldUser(name, hp, atk, def);
+                    characterList.add(newCharacter);
+                    aboutMember.setText(characterList.toString());
+                    break;
+            }
+        }
+    }
 
 
-
-
-
-
-
-}
 
