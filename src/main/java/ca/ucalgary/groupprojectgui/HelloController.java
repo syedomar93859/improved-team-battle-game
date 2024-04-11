@@ -136,6 +136,14 @@ public class HelloController {
         int atk = Integer.parseInt(createAtk.getText());
         Character newCharacter = getCharacter(name, hp, atk);
 
+        // Check if character with the same name already exists
+        for (Character character : characterList) {
+            if (character.getName().equals(name)) {
+                aboutMember.setText("A character with this name already exists.");
+                return;
+            }
+        }
+
         characterList.add(newCharacter);
         StringBuilder sb = new StringBuilder();
         for (Character character : characterList) {
@@ -148,7 +156,7 @@ public class HelloController {
     private Character getCharacter(String name, int hp, int atk) {
         int def = Integer.parseInt(createDef.getText());
         CharacterType type = createType.getValue();
-        Character newCharacter = switch (type) {
+        return switch (type) {
             // create HEALER object
             case HEALER -> new Healer(name, hp, atk, def);
 
@@ -161,7 +169,6 @@ public class HelloController {
             // create SHIELDUSER object
             case SHIELDUSER -> new ShieldUser(name, hp, atk, def);
         };
-        return newCharacter;
     }
 
     @FXML
