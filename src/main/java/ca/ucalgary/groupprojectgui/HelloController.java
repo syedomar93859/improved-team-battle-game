@@ -1,20 +1,21 @@
 package ca.ucalgary.groupprojectgui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HelloController {
 
     private File file;
+    @FXML
+    private Button showBattleButton;
 
     @FXML
     private TextArea bossAtk;
@@ -253,25 +254,40 @@ public class HelloController {
             }
         }
     }
-    private void load(File file){
-        Data data = FileLoader.load(file);
-    }
-    private void viewBattle() {
-        ArrayList<Battlefield> battle = data.getBattleDetails();
-        viewBattleDetails(battle);
+
+    public void showDetails(ArrayList<Battlefield> battle){
+        showBattleButton.setOnMouseClicked(event -> {
+            String topThreeAttack = battle.get(0).toString();
+            String lineupDetails = battle.get(1).toString();
+            String bossAtkDetails = battle.get(2).toString();
+            String characterDamage = battle.get(3).toString();
+            topThreeAtk.appendText(topThreeAttack);
+            lineup.appendText(lineupDetails);
+            bossAtk.appendText(bossAtkDetails);
+            charDmg.appendText(characterDamage);
+        });
     }
 
-    private void viewBattleDetails(ArrayList<Battlefield> battle) {
-        String topThreeAttack = battle.get(0);
-        String lineupDetails = battle.get(1);
-        String bossAtkDetails = battle.get(2);
-        String characterDamage = battle.get(3);
-        topThreeAtk.appendText(topThreeAttack);
-        lineup.appendText(lineupDetails);
-        bossAtk.appendText(bossAtkDetails);
-        charDmg.appendText(characterDamage);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
-
-
 

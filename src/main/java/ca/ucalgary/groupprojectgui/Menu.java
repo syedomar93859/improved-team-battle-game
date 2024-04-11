@@ -245,6 +245,7 @@ public class Menu {
                 case 8: // Calculate Boss Attack
                     int x = Battlefield.CalculateBossAtk();
                     System.out.println("The Boss Atk is " + x);
+                    showDetails(x);
                     break;
 
                 case 9: // Displays top 3 members with highest attack

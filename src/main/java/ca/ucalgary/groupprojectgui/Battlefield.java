@@ -20,10 +20,52 @@ public class Battlefield{
      * @return int with boss's damage
      */
     public static Integer CalculateBossAtk(){
-        Random rand = new Random();
-        int highestDamageMultiplier = 11;
-        int randomMultiplier = rand.nextInt(highestDamageMultiplier);
-        return randomMultiplier * 1000;
+        ArrayList<String> levelsOfDemonicInfluence = new ArrayList<String>();
+        levelsOfDemonicInfluence.add("None");
+        levelsOfDemonicInfluence.add("Low");
+        levelsOfDemonicInfluence.add("Medium");
+        levelsOfDemonicInfluence.add("High");
+        Random randInfluence = new Random();
+        Random randMultiplier = new Random();
+        int highestDamageMultiplier = 10;
+        int highestLevelInfluence = 3;
+        int randomMultiplier = randMultiplier.nextInt(highestDamageMultiplier);
+        int randomInfluence = randInfluence.nextInt(highestLevelInfluence);
+        String influenceLevel = levelsOfDemonicInfluence.get(randomInfluence);
+        if(randomMultiplier == 10){
+            int multiplier = randomInfluence + randomMultiplier;
+            if (!influenceLevel.equals("None")){
+                return 5000 + (multiplier * 200);
+            }else{
+                return 5000 -(multiplier * 200);
+            }
+        }else if (influenceLevel.equals("None")){
+            return 0;
+        }else if(influenceLevel.equals("Low")){
+            if (randomMultiplier < 4 && randomMultiplier > 0){
+                return randomMultiplier * 500;
+            }else if(randomMultiplier != 0){
+                return randomMultiplier * 250;
+            }else{
+                return randomMultiplier * 100;
+            }
+        }else if(influenceLevel.equals("Medium")){
+            if (randomMultiplier > 3 && randomMultiplier < 7){
+                return randomMultiplier * 500;
+            }else if(randomMultiplier != 0){
+                return randomMultiplier * 250;
+            }else{
+                return randomMultiplier * 100;
+            }
+        }else{
+            if (randomMultiplier > 6 && randomMultiplier < 10){
+                return randomMultiplier * 500;
+            }else if(randomMultiplier != 0){
+                return randomMultiplier * 250;
+            }else{
+                return  randomMultiplier * 100;
+            }
+        }
     }
 
     /**
