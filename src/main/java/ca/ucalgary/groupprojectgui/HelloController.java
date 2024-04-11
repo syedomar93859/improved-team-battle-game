@@ -1,21 +1,32 @@
 package ca.ucalgary.groupprojectgui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HelloController {
 
     private File file;
+
     @FXML
-    private Button showBattleButton;
+    private TextArea bossAtk;
+
+    @FXML
+    private TextArea charDmg;
+
+    @FXML
+    private TextArea lineup;
+
+    @FXML
+    private TextArea topThreeAtk;
 
     private Stage stage;
 
@@ -55,25 +66,6 @@ public class HelloController {
             alertDisplay.setText("File loaded successfully!");
             alertDisplay.setStyle("-fx-text-fill: blue;");
             this.file = selectedFile; // Set the file field
-
-            StringBuilder sb = new StringBuilder();
-            for (Character character : characterList) {
-                sb.append(character.toString());
-                sb.append("\n"); // for newline
-            }
-            aboutMember.setText(sb.toString());
-
-            StringBuilder st = new StringBuilder();
-            for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
-                st.append("Team Name: ").append(entry.getKey()).append("\n");
-                st.append("Members: \n");
-                for (Character character : entry.getValue()) {
-                    st.append(character.toString()).append("\n");
-                }
-                st.append("\n");
-            }
-            aboutTeam.setText(st.toString());
-
         } else {
             // Show an error message if no file was selected
             alertDisplay.setText("Failed to load file or invalid file format.");
@@ -153,16 +145,8 @@ public class HelloController {
         String name = createName.getText();
         int hp = Integer.parseInt(createHp.getText());
         int atk = Integer.parseInt(createAtk.getText());
-        int def = Integer.parseInt(createDef.getText());
-        Character newCharacter = getCharacter(name, hp, atk, def);
+        Character newCharacter = getCharacter(name, hp, atk);
 
-        // Check if character with the same name already exists
-        for (Character character : characterList) {
-            if (character.getName().equals(name)) {
-                aboutMember.setText("A character with this name already exists.");
-                return;
-            }
-        }
         characterList.add(newCharacter);
         StringBuilder sb = new StringBuilder();
         for (Character character : characterList) {
@@ -172,9 +156,10 @@ public class HelloController {
         aboutMember.setText(sb.toString());
     }
 
-    private Character getCharacter(String name, int hp, int atk, int def) {
+    private Character getCharacter(String name, int hp, int atk) {
+        int def = Integer.parseInt(createDef.getText());
         CharacterType type = createType.getValue();
-        return switch (type) {
+        Character newCharacter = switch (type) {
             // create HEALER object
             case HEALER -> new Healer(name, hp, atk, def);
 
@@ -187,6 +172,7 @@ public class HelloController {
             // create SHIELDUSER object
             case SHIELDUSER -> new ShieldUser(name, hp, atk, def);
         };
+        return newCharacter;
     }
 
     @FXML
@@ -267,51 +253,25 @@ public class HelloController {
             }
         }
     }
-
-    @FXML
-    private Button Top3Button;
-    @FXML
-    private TextArea topThreeAtk;
-
-    @FXML
-    private void topThree() {
-        String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
-        topThreeAtk.setText(topThreeAtkDetails);
+    private void load(File file){
+        Data data = FileLoader.load(file);
+    }
+    private void viewBattle() {
+        ArrayList<Battlefield> battle = data.getBattleDetails();
+        viewBattleDetails(battle);
     }
 
-    @FXML
-    private Button LineupButton;
-    @FXML
-    private TextArea lineup;
-
-    @FXML
-    private void lineup() {
-        String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
-        lineup.setText(lineupDetails);
-    }
-
-    @FXML
-    private Button BossButton;
-    @FXML
-    private TextArea bossAtk;
-
-    @FXML
-    private void boss() {
-        int bossAttack = Battlefield.CalculateBossAtk();
-        bossAtk.setText("The Boss Atk is " + bossAttack);
-    }
-
-    @FXML
-    private Button DmgButton;
-    @FXML
-    private TextArea charDmg;
-
-    @FXML
-    private void damage() {
-        for (Character character : characterList) {
-            int w = Battlefield.CalculateDamage(character);
-            charDmg.setText("The Character Damage for is:" + w);
-        }
+    private void viewBattleDetails(ArrayList<Battlefield> battle) {
+        String topThreeAttack = battle.get(0).toString();
+        String lineupDetails = battle.get(1).toString();
+        String bossAtkDetails = battle.get(2).toString();
+        String characterDamage = battle.get(3).toString();
+        topThreeAtk.appendText(topThreeAttack);
+        lineup.appendText(lineupDetails);
+        bossAtk.appendText(bossAtkDetails);
+        charDmg.appendText(characterDamage);
     }
 }
+
+
 
