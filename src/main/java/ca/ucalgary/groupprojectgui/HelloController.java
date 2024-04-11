@@ -255,7 +255,7 @@ public class HelloController {
         }
     }
 
-    public void showDetails(ArrayList<Battlefield> battle){
+    public void showDetails(String details, ArrayList<Battlefield> battle){
         showBattleButton.setOnMouseClicked(event -> {
             String topThreeAttack = battle.get(0).toString();
             String lineupDetails = battle.get(1).toString();

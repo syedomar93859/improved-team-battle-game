@@ -72,7 +72,7 @@ public class Battlefield{
      * AskTopThreeAtk goes through every party member to determine which are 3 highest dealing damage members.
      *
      */
-    public static void AskTopThreeAtk(ArrayList<Character> characterList) {
+    public static String AskTopThreeAtk(ArrayList<Character> characterList) {
         HashMap<String, Integer> partyDamage = new HashMap<String, Integer>();
         // It goes through an arraylist filled with all the members of party, and gets each member's type and attack.
         for (Character member : characterList) {
@@ -107,13 +107,13 @@ public class Battlefield{
                 Top3Details += member.split(":")[0] + " with damage: " + member.split(":")[1] + "\n";
             }
         }
-        System.out.println(Top3Details);
+        return Top3Details;
     }
 
     /**
      * HPAndDefLineup is a method that recommends a lineup of 4 characters, one from each type, based on the highest HP and DEF:
      */
-    public static void HPAndDefLineup(ArrayList<Character> characterList) {
+    public static String HPAndDefLineup(ArrayList<Character> characterList) {
         HashMap<String, Character> bestCharacters = new HashMap<String, Character>();
         // iterates through characterList
         for (Character member : characterList) {
@@ -131,7 +131,7 @@ public class Battlefield{
             lineupDetails.append(member.getType() + " named " + member.getName() + " with " + member.getHp() + " HP and " + member.getDef() + " DEF.\n");
         }
 
-        System.out.println(lineupDetails);
+        return lineupDetails.toString();
     }
 
     /**
