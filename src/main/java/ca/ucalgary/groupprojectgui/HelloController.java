@@ -17,18 +17,6 @@ public class HelloController {
     @FXML
     private Button showBattleButton;
 
-    @FXML
-    private TextArea bossAtk;
-
-    @FXML
-    private TextArea charDmg;
-
-    @FXML
-    private TextArea lineup;
-
-    @FXML
-    private TextArea topThreeAtk;
-
     private Stage stage;
 
     @FXML
@@ -255,39 +243,50 @@ public class HelloController {
         }
     }
 
-    public void showDetails(String details, ArrayList<Battlefield> battle){
-        showBattleButton.setOnMouseClicked(event -> {
-            String topThreeAttack = battle.get(0).toString();
-            String lineupDetails = battle.get(1).toString();
-            String bossAtkDetails = battle.get(2).toString();
-            String characterDamage = battle.get(3).toString();
-            topThreeAtk.appendText(topThreeAttack);
-            lineup.appendText(lineupDetails);
-            bossAtk.appendText(bossAtkDetails);
-            charDmg.appendText(characterDamage);
-        });
+    @FXML
+    private Button Top3Button;
+    @FXML
+    private TextArea topThreeAtk;
+
+    @FXML
+    private void topThree() {
+        String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
+        topThreeAtk.setText(topThreeAtkDetails);
     }
 
+    @FXML
+    private Button LineupButton;
+    @FXML
+    private TextArea lineup;
 
+    @FXML
+    private void lineup() {
+        String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
+        lineup.setText(lineupDetails);
+    }
 
+    @FXML
+    private Button BossButton;
+    @FXML
+    private TextArea bossAtk;
 
+    @FXML
+    private void boss() {
+        int bossAttack = Battlefield.CalculateBossAtk();
+        bossAtk.setText("The Boss Atk is " + bossAttack);
+    }
 
+    @FXML
+    private Button DmgButton;
+    @FXML
+    private TextArea charDmg;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FXML
+    private void damage() {
+        for (Character character : characterList) {
+            int w = Battlefield.CalculateDamage(character);
+            charDmg.setText("The Character Damage for is:" + w);
+        }
+    }
 }
 
