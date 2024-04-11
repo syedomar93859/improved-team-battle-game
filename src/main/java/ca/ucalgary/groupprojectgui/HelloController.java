@@ -36,7 +36,8 @@ public class HelloController {
 
     @FXML
     private void initialize() {
-
+        createType.getItems().setAll(CharacterType.values());
+        editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
     }
 
     @FXML
@@ -117,7 +118,7 @@ public class HelloController {
     @FXML
     private TextField createDef;
     @FXML
-    private TextField createType;
+    private ComboBox<CharacterType> createType;
     @FXML
     private Button createCharac;
     @FXML
@@ -131,39 +132,34 @@ public class HelloController {
         String name = createName.getText();
         int hp = Integer.parseInt(createHp.getText());
         int atk = Integer.parseInt(createAtk.getText());
-        int def = Integer.parseInt(createDef.getText());
-        CharacterType type = CharacterType.valueOf((createType.getText()));
-        Character newCharacter;
+        Character newCharacter = getCharacter(name, hp, atk);
 
-        switch (type) {
+        characterList.add(newCharacter);
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characterList) {
+            sb.append(character.toString());
+            sb.append("\n"); // for newline
+        }
+        aboutMember.setText(sb.toString());
+    }
+
+    private Character getCharacter(String name, int hp, int atk) {
+        int def = Integer.parseInt(createDef.getText());
+        CharacterType type = createType.getValue();
+        Character newCharacter = switch (type) {
             // create HEALER object
-            case HEALER:
-                newCharacter = new Healer(name, hp, atk, def);
-                characterList.add(newCharacter);
-                aboutMember.setText(characterList.toString());
-                break;
+            case HEALER -> new Healer(name, hp, atk, def);
 
             // create MARKSMAN object
-            case MARKSMAN:
-                newCharacter = new Marksman(name, hp, atk, def);
-                characterList.add(newCharacter);
-                aboutMember.setText(characterList.toString());
-                break;
+            case MARKSMAN -> new Marksman(name, hp, atk, def);
 
             // create SWORDSMAN object
-            case SWORDSMAN:
-                newCharacter = new Swordsman(name, hp, atk, def);
-                characterList.add(newCharacter);
-                aboutMember.setText(characterList.toString());
-                break;
+            case SWORDSMAN -> new Swordsman(name, hp, atk, def);
 
             // create SHIELDUSER object
-            case SHIELDUSER:
-                newCharacter = new ShieldUser(name, hp, atk, def);
-                characterList.add(newCharacter);
-                aboutMember.setText(characterList.toString());
-                break;
-        }
+            case SHIELDUSER -> new ShieldUser(name, hp, atk, def);
+        };
+        return newCharacter;
     }
 
     @FXML
@@ -179,21 +175,34 @@ public class HelloController {
     private void createTeamGUI() {
         String teamName = teamNameText.getText();
         List<Character> team = new ArrayList<>();
-        String characterName = teamCharacText.getText();
-        for (Character character : characterList) {
-            if (character.getName().equals(characterName)) {
-                team.add(character); // adds character to team list
+        String[] characterNames = teamCharacText.getText().split(","); // split by comma
+        for (String characterName : characterNames) {
+            characterName = characterName.trim(); // remove leading and trailing spaces
+            for (Character character : characterList) {
+                if (character.getName().equals(characterName)) {
+                    team.add(character); // adds character to team list
+                }
             }
-            Team newTeam = Team.createTeam(teamName, team); // creates a new Team object
-            teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap
         }
-        aboutTeam.setText(teams.toString());
+        Team newTeam = Team.createTeam(teamName, team); // creates a new Team object
+        teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap
+
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
+            sb.append("Team Name: ").append(entry.getKey()).append("\n");
+            sb.append("Members: \n");
+            for (Character character : entry.getValue()) {
+                sb.append(character.toString()).append("\n");
+            }
+            sb.append("\n");
+        }
+        aboutTeam.setText(sb.toString());
     }
 
     @FXML
     private TextField editName;
     @FXML
-    private TextField editAttribute;
+    private ComboBox<String> editAttribute;
     @FXML
     private TextField editNew;
     @FXML
@@ -202,7 +211,7 @@ public class HelloController {
     @FXML
     private void editCharacterGUI() {
         String name = editName.getText();
-        String attribute = editAttribute.getText();
+        String attribute = editAttribute.getValue();
         String newValue = editNew.getText();
 
         for (Character character : characterList) {
