@@ -17,6 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.groupprojectgui.HelloController">
     <children>
         <MenuBar prefWidth="900.0" VBox.vgrow="NEVER">
@@ -75,7 +76,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2311" />
                             </textFill>
                         </Label>
-                        <TextField fx:id="createType" layoutX="119.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" />
+                        <ComboBox fx:id="createType" layoutX="119.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="51.0" layoutY="189.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Type" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x13111" />
@@ -136,7 +137,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x233" />
                             </textFill>
                         </Label>
-                        <TextField fx:id="editAttribute" layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
+                        <ComboBox fx:id="editAttribute" layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="54.0" layoutY="537.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Attribute" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x1312" />
