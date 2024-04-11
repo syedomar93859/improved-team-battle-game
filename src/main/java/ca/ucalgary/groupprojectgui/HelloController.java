@@ -15,6 +15,19 @@ import java.util.Map;
 public class HelloController {
 
     private File file;
+
+    @FXML
+    private TextArea bossAtk;
+
+    @FXML
+    private TextArea charDmg;
+
+    @FXML
+    private TextArea lineup;
+
+    @FXML
+    private TextArea topThreeAtk;
+
     private Stage stage;
 
     @FXML
@@ -239,6 +252,24 @@ public class HelloController {
                 }
             }
         }
+    }
+    private void load(File file){
+        Data data = FileLoader.load(file);
+    }
+    private void viewBattle() {
+        ArrayList<Battlefield> battle = data.getBattleDetails();
+        viewBattleDetails(battle);
+    }
+
+    private void viewBattleDetails(ArrayList<Battlefield> battle) {
+        String topThreeAttack = battle.get(0);
+        String lineupDetails = battle.get(1);
+        String bossAtkDetails = battle.get(2);
+        String characterDamage = battle.get(3);
+        topThreeAtk.appendText(topThreeAttack);
+        lineup.appendText(lineupDetails);
+        bossAtk.appendText(bossAtkDetails);
+        charDmg.appendText(characterDamage);
     }
 }
 

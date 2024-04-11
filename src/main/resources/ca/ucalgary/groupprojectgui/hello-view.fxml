@@ -17,7 +17,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ComboBox?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.groupprojectgui.HelloController">
     <children>
         <MenuBar prefWidth="900.0" VBox.vgrow="NEVER">
@@ -26,7 +25,7 @@
                     <items>
                         <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleLoad" text="Load" />
                         <MenuItem fx:id="save" mnemonicParsing="false" onAction="#handleSaveFile" text="Save" />
-                  <MenuItem fx:id="saveAs" mnemonicParsing="false" onAction="#handleSaveAsFile" text="SaveAs" />
+                        <MenuItem fx:id="saveAs" mnemonicParsing="false" onAction="#handleSaveAsFile" text="SaveAs" />
                         <MenuItem fx:id="quit" mnemonicParsing="false" onAction="#handleQuit" text="Quit" />
                     </items>
                 </Menu>
@@ -76,7 +75,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2311" />
                             </textFill>
                         </Label>
-                        <ComboBox fx:id="createType" layoutX="119.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" />
+                        <TextField fx:id="createType" layoutX="119.0" layoutY="186.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="51.0" layoutY="189.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Type" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x13111" />
@@ -137,7 +136,7 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x233" />
                             </textFill>
                         </Label>
-                        <ComboBox fx:id="editAttribute" layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
+                        <TextField fx:id="editAttribute" layoutX="122.0" layoutY="534.0" prefHeight="22.0" prefWidth="96.0" />
                         <Label alignment="CENTER" layoutX="54.0" layoutY="537.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Attribute" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="14.0" fx:id="x1312" />
@@ -155,9 +154,9 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2313" />
                             </textFill>
                         </Label>
-                  <Button fx:id="createCharac" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#createCharacter" prefHeight="26.0" prefWidth="96.0" text="Create" />
-                  <Button fx:id="createTeamButton" layoutX="122.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#createTeamGUI" prefHeight="26.0" prefWidth="96.0" text="Create" />
-                  <Button fx:id="editButton" layoutX="122.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#editCharacterGUI" prefHeight="26.0" prefWidth="96.0" text="Edit" />
+                        <Button fx:id="createCharac" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#createCharacter" prefHeight="26.0" prefWidth="96.0" text="Create" />
+                        <Button fx:id="createTeamButton" layoutX="122.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#createTeamGUI" prefHeight="26.0" prefWidth="96.0" text="Create" />
+                        <Button fx:id="editButton" layoutX="122.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#editCharacterGUI" prefHeight="26.0" prefWidth="96.0" text="Edit" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -173,7 +172,7 @@
                                         <Color red="0.624" green="0.624" blue="0.624" fx:id="x25" />
                                     </textFill>
                                 </Label>
-                                <TextArea layoutX="14.0" layoutY="84.0" prefHeight="104.0" prefWidth="156.0" />
+                                <TextArea fx:id="topThreeAtk" layoutX="14.0" layoutY="84.0" prefHeight="104.0" prefWidth="156.0" />
                                 <Label alignment="CENTER" layoutX="19.0" layoutY="289.0" style="&#10;" text="Determine Boss's Atk" textAlignment="CENTER" wrapText="false">
                                     <font>
                                         <Font size="18.0" fx:id="x151" />
@@ -182,7 +181,7 @@
                                         <Color red="0.624" green="0.624" blue="0.624" fx:id="x251" />
                                     </textFill>
                                 </Label>
-                                <TextArea layoutX="14.0" layoutY="323.0" prefHeight="104.0" prefWidth="178.0" />
+                                <TextArea fx:id="bossAtk" layoutX="14.0" layoutY="323.0" prefHeight="104.0" prefWidth="178.0" />
                                 <Label alignment="CENTER" layoutX="191.0" layoutY="41.0" style="&#10;" text="Lineup Based on HP and Def" textAlignment="CENTER" wrapText="false">
                                     <font>
                                         <Font size="18.0" fx:id="x152" />
@@ -191,7 +190,7 @@
                                         <Color red="0.624" green="0.624" blue="0.624" fx:id="x252" />
                                     </textFill>
                                 </Label>
-                                <TextArea layoutX="228.0" layoutY="84.0" prefHeight="104.0" prefWidth="151.0" />
+                                <TextArea fx:id="lineup" layoutX="228.0" layoutY="84.0" prefHeight="104.0" prefWidth="151.0" />
                                 <Label alignment="CENTER" layoutX="204.0" layoutY="289.0" prefHeight="27.0" prefWidth="215.0" style="&#10;" text="Determine Charac Dmg" textAlignment="CENTER" wrapText="false">
                                     <font>
                                         <Font size="18.0" fx:id="x1511" />
@@ -200,7 +199,7 @@
                                         <Color red="0.624" green="0.624" blue="0.624" fx:id="x2511" />
                                     </textFill>
                                 </Label>
-                                <TextArea layoutX="222.0" layoutY="323.0" prefHeight="104.0" prefWidth="178.0" />
+                                <TextArea fx:id="charDmg" layoutX="222.0" layoutY="323.0" prefHeight="104.0" prefWidth="178.0" />
                             </children>
                         </AnchorPane>
                     </content>
