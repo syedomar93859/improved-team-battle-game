@@ -55,6 +55,25 @@ public class HelloController {
             alertDisplay.setText("File loaded successfully!");
             alertDisplay.setStyle("-fx-text-fill: blue;");
             this.file = selectedFile; // Set the file field
+
+            StringBuilder sb = new StringBuilder();
+            for (Character character : characterList) {
+                sb.append(character.toString());
+                sb.append("\n"); // for newline
+            }
+            aboutMember.setText(sb.toString());
+
+            StringBuilder st = new StringBuilder();
+            for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
+                st.append("Team Name: ").append(entry.getKey()).append("\n");
+                st.append("Members: \n");
+                for (Character character : entry.getValue()) {
+                    st.append(character.toString()).append("\n");
+                }
+                st.append("\n");
+            }
+            aboutTeam.setText(st.toString());
+
         } else {
             // Show an error message if no file was selected
             alertDisplay.setText("Failed to load file or invalid file format.");
@@ -134,7 +153,8 @@ public class HelloController {
         String name = createName.getText();
         int hp = Integer.parseInt(createHp.getText());
         int atk = Integer.parseInt(createAtk.getText());
-        Character newCharacter = getCharacter(name, hp, atk);
+        int def = Integer.parseInt(createDef.getText());
+        Character newCharacter = getCharacter(name, hp, atk, def);
 
         // Check if character with the same name already exists
         for (Character character : characterList) {
@@ -143,7 +163,6 @@ public class HelloController {
                 return;
             }
         }
-
         characterList.add(newCharacter);
         StringBuilder sb = new StringBuilder();
         for (Character character : characterList) {
@@ -153,8 +172,7 @@ public class HelloController {
         aboutMember.setText(sb.toString());
     }
 
-    private Character getCharacter(String name, int hp, int atk) {
-        int def = Integer.parseInt(createDef.getText());
+    private Character getCharacter(String name, int hp, int atk, int def) {
         CharacterType type = createType.getValue();
         return switch (type) {
             // create HEALER object
