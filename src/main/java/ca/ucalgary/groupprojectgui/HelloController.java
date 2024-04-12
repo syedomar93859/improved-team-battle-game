@@ -48,8 +48,16 @@ public class HelloController {
         editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
     }
 
+    public void shellLoad(File testFile) {
+        // Call the FileLoader class's load method
+        FileLoader.load(testFile, characterList, teams);
+        this.file = testFile; // Set
+    }
+
+
     @FXML
     private void handleLoad() {
+        alertDisplay.clear();
         // Create a file chooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open File");
@@ -72,6 +80,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveFile() {
+        alertDisplay.clear();
         if (teams != null && file != null && characterList != null) {
             FileSaver.save(file, characterList, teams);
             alertDisplay.setText("Success! File saved");
@@ -84,6 +93,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveAsFile() {
+        alertDisplay.clear();
         if (teams != null && characterList != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save File");
@@ -109,6 +119,7 @@ public class HelloController {
 
     @FXML
     private void about() {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("Message");
@@ -137,29 +148,45 @@ public class HelloController {
      */
     @FXML
     private void createCharacter() {
+        alertDisplay.clear();
         String name = createName.getText();
-        int hp = Integer.parseInt(createHp.getText());
-        int atk = Integer.parseInt(createAtk.getText());
-        Character newCharacter = getCharacter(name, hp, atk);
+        String hpStr = createHp.getText();
+        String atkStr = createAtk.getText();
+        String defStr = createDef.getText();
 
-        // Check if character with the same name already exists
-        for (Character character : characterList) {
-            if (character.getName().equals(name)) {
-                aboutMember.setText("A character with this name already exists.");
-                return;
+        // Validate if the numeric fields contain only numbers
+        if (!isValidInteger(hpStr) || !isValidInteger(atkStr) || !isValidInteger(defStr)) {
+            alertDisplay.setText("Error! hp, atk, and def only take in numeric values");
+            alertDisplay.setStyle("-fx-text-fill: red");
+            return;
+        }
+
+
+            int hp = Integer.parseInt(createHp.getText());
+            int atk = Integer.parseInt(createAtk.getText());
+            Character newCharacter = getCharacter(name, hp, atk);
+
+            // Check if character with the same name already exists
+            for (Character character : characterList) {
+                if (character.getName().equals(name)) {
+                    alertDisplay.setText("A character with this name already exists.");
+                    alertDisplay.setStyle("-fx-text-fill: red");
+                    return;
+                }
+            }
+
+            characterList.add(newCharacter);
+            StringBuilder sb = new StringBuilder();
+            for (Character character : characterList) {
+                sb.append(character.toString());
+                sb.append("\n"); // for newline
             }
         }
 
-        characterList.add(newCharacter);
-        StringBuilder sb = new StringBuilder();
-        for (Character character : characterList) {
-            sb.append(character.toString());
-            sb.append("\n"); // for newline
-        }
 
-    }
 
     private Character getCharacter(String name, int hp, int atk) {
+        alertDisplay.clear();
         int def = Integer.parseInt(createDef.getText());
         CharacterType type = createType.getValue();
         return switch (type) {
@@ -188,6 +215,7 @@ public class HelloController {
 
     @FXML
     private void createTeamGUI() {
+        alertDisplay.clear();
         String teamName = teamNameText.getText();
         List<Character> team = new ArrayList<>();
         String[] characterNames = teamCharacText.getText().split(","); // split by comma
@@ -225,6 +253,7 @@ public class HelloController {
 
     @FXML
     private void editCharacterGUI() {
+        alertDisplay.clear();
         String name = editName.getText();
         String attribute = editAttribute.getValue();
         String newValue = editNew.getText();
@@ -233,25 +262,40 @@ public class HelloController {
             if (character.getName().equals(name)) {
                 switch (attribute) {
                     case "Atk":
+                        String newAtkStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error atk must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newAtk = Integer.parseInt(newValue);
                         character.setAtk(newAtk);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                     case "Def":
+                        String newDefStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error def must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newDef = Integer.parseInt(newValue);
                         character.setDef(newDef);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
+
                     case "Hp":
+                        String newHpStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error hp must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newHp = Integer.parseInt(newValue);
                         character.setHp(newHp);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                     case "Type":
                         character.setType(CharacterType.valueOf(newValue));
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                 }
+
             }
         }
     }
@@ -274,6 +318,7 @@ public class HelloController {
 
     @FXML
     private void lineup() {
+        alertDisplay.clear();
         String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
         lineup.setText(lineupDetails);
     }
@@ -323,6 +368,16 @@ public class HelloController {
                 aboutTeam.appendText(character.toString() + "\n");
             }
             aboutTeam.appendText("\n");
+        }
+    }
+
+
+    public boolean isValidInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 

@@ -18,13 +18,18 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    /*public static void main(String[] args) {
-        File testFile = new File(args[0]);
-        new HelloApplication();
-        launch();
-    }*/
-
-
+    public static void main(String[] args) {
+        if (args.length > 0) {
+            File testFile = new File(args[0]);
+            HelloController controller = new HelloController();
+            controller.shellLoad(testFile);
+            launch(args);
+        } else {
+            System.out.println("Please provide a file as an argument.");
+        }
+    }
 }
+
+
 
 
