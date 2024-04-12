@@ -15,56 +15,34 @@ public class Battlefield{
     }
 
     /**
-     * CalculateBossAtk calculates how much damage the boss deals based on a random integer between 11 and 0.
-     *
+     * CalculateBossAtk calculates how much damage the boss deals based on a random integer between 11 and 0 and taking
+     *into account the character types og all the members
      * @return int with boss's damage
      */
-    public static Integer CalculateBossAtk(){
-        ArrayList<String> levelsOfDemonicInfluence = new ArrayList<String>();
-        levelsOfDemonicInfluence.add("None");
-        levelsOfDemonicInfluence.add("Low");
-        levelsOfDemonicInfluence.add("Medium");
-        levelsOfDemonicInfluence.add("High");
-        Random randInfluence = new Random();
+    public static Integer CalculateBossAtk(ArrayList<Character> characterList) {
+        int characterAmount = 0;
+        int bossAdaptation = 0;
+        for (Character member : characterList) {
+            CharacterType charType = member.getType();
+            if (charType.equals(CharacterType.HEALER)) {
+                bossAdaptation++;
+            } else if (charType.equals(CharacterType.SWORDSMAN)) {
+                bossAdaptation = bossAdaptation + 4;
+            } else if (charType.equals(CharacterType.MARKSMAN)) {
+                bossAdaptation = bossAdaptation + 2;
+            } else if (charType.equals(CharacterType.SHIELDUSER)) {
+                bossAdaptation = bossAdaptation + 3;
+                characterAmount++;
+            }
+        }
         Random randMultiplier = new Random();
         int highestDamageMultiplier = 10;
-        int highestLevelInfluence = 3;
         int randomMultiplier = randMultiplier.nextInt(highestDamageMultiplier);
-        int randomInfluence = randInfluence.nextInt(highestLevelInfluence);
-        String influenceLevel = levelsOfDemonicInfluence.get(randomInfluence);
-        if(randomMultiplier == 10){
-            int multiplier = randomInfluence + randomMultiplier;
-            if (!influenceLevel.equals("None")){
-                return 5000 + (multiplier * 200);
-            }else{
-                return 5000 -(multiplier * 200);
-            }
-        }else if (influenceLevel.equals("None")){
-            return 0;
-        }else if(influenceLevel.equals("Low")){
-            if (randomMultiplier < 4 && randomMultiplier > 0){
-                return randomMultiplier * 500;
-            }else if(randomMultiplier != 0){
-                return randomMultiplier * 250;
-            }else{
-                return randomMultiplier * 100;
-            }
-        }else if(influenceLevel.equals("Medium")){
-            if (randomMultiplier > 3 && randomMultiplier < 7){
-                return randomMultiplier * 500;
-            }else if(randomMultiplier != 0){
-                return randomMultiplier * 250;
-            }else{
-                return randomMultiplier * 100;
-            }
-        }else{
-            if (randomMultiplier > 6 && randomMultiplier < 10){
-                return randomMultiplier * 500;
-            }else if(randomMultiplier != 0){
-                return randomMultiplier * 250;
-            }else{
-                return  randomMultiplier * 100;
-            }
+        int baseDamage = characterAmount * 100;
+        if (randomMultiplier == 10) {
+            return 5000;
+        } else {
+            return baseDamage;
         }
     }
 
@@ -154,3 +132,4 @@ public class Battlefield{
     }
 
 }
+

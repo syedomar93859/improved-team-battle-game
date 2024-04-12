@@ -14,20 +14,6 @@ import java.util.*;
 public class HelloController {
 
     private File file;
-    @FXML
-    private Button showBattleButton;
-
-    @FXML
-    private TextArea bossAtk;
-
-    @FXML
-    private TextArea charDmg;
-
-    @FXML
-    private TextArea lineup;
-
-    @FXML
-    private TextArea topThreeAtk;
 
     private Stage stage;
 
@@ -44,6 +30,14 @@ public class HelloController {
     private MenuItem about;
 
     @FXML
+    private Button showBattleButton;
+
+    @FXML
+    private Button AboutMembersButton;
+    @FXML
+    private Button AboutTeamButton;
+
+    @FXML
     private TextField alertDisplay;
     private List<Character> characterList = new ArrayList<>();
     private Map<String, List<Character>> teams = new HashMap<>();
@@ -54,8 +48,16 @@ public class HelloController {
         editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
     }
 
+    public void shellLoad(File testFile) {
+        // Call the FileLoader class's load method
+        FileLoader.load(testFile, characterList, teams);
+        this.file = testFile; // Set
+    }
+
+
     @FXML
     private void handleLoad() {
+        alertDisplay.clear();
         // Create a file chooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open File");
@@ -78,6 +80,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveFile() {
+        alertDisplay.clear();
         if (teams != null && file != null && characterList != null) {
             FileSaver.save(file, characterList, teams);
             alertDisplay.setText("Success! File saved");
@@ -90,7 +93,8 @@ public class HelloController {
 
     @FXML
     public void handleSaveAsFile() {
-        if (teams != null && file != null && characterList != null) {
+        alertDisplay.clear();
+        if (teams != null && characterList != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save File");
             File selectedFile = fileChooser.showSaveDialog(stage);
@@ -115,6 +119,7 @@ public class HelloController {
 
     @FXML
     private void about() {
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("Message");
@@ -143,10 +148,32 @@ public class HelloController {
      */
     @FXML
     private void createCharacter() {
+        alertDisplay.clear();
         String name = createName.getText();
+        String hpStr = createHp.getText();
+        String atkStr = createAtk.getText();
+        String defStr = createDef.getText();
+
+        // Validate if the numeric fields contain only numbers
+        if (!isValidInteger(hpStr) || !isValidInteger(atkStr) || !isValidInteger(defStr)) {
+            alertDisplay.setText("Error! hp, atk, and def only take in numeric values");
+            alertDisplay.setStyle("-fx-text-fill: red");
+            return;
+        }
+
+
         int hp = Integer.parseInt(createHp.getText());
         int atk = Integer.parseInt(createAtk.getText());
         Character newCharacter = getCharacter(name, hp, atk);
+
+        // Check if character with the same name already exists
+        for (Character character : characterList) {
+            if (character.getName().equals(name)) {
+                alertDisplay.setText("A character with this name already exists.");
+                alertDisplay.setStyle("-fx-text-fill: red");
+                return;
+            }
+        }
 
         characterList.add(newCharacter);
         StringBuilder sb = new StringBuilder();
@@ -154,13 +181,15 @@ public class HelloController {
             sb.append(character.toString());
             sb.append("\n"); // for newline
         }
-        aboutMember.setText(sb.toString());
     }
 
+
+
     private Character getCharacter(String name, int hp, int atk) {
+        alertDisplay.clear();
         int def = Integer.parseInt(createDef.getText());
         CharacterType type = createType.getValue();
-        Character newCharacter = switch (type) {
+        return switch (type) {
             // create HEALER object
             case HEALER -> new Healer(name, hp, atk, def);
 
@@ -173,7 +202,6 @@ public class HelloController {
             // create SHIELDUSER object
             case SHIELDUSER -> new ShieldUser(name, hp, atk, def);
         };
-        return newCharacter;
     }
 
     @FXML
@@ -187,6 +215,7 @@ public class HelloController {
 
     @FXML
     private void createTeamGUI() {
+        alertDisplay.clear();
         String teamName = teamNameText.getText();
         List<Character> team = new ArrayList<>();
         String[] characterNames = teamCharacText.getText().split(","); // split by comma
@@ -210,7 +239,7 @@ public class HelloController {
             }
             sb.append("\n");
         }
-        aboutTeam.setText(sb.toString());
+
     }
 
     @FXML
@@ -224,6 +253,7 @@ public class HelloController {
 
     @FXML
     private void editCharacterGUI() {
+        alertDisplay.clear();
         String name = editName.getText();
         String attribute = editAttribute.getValue();
         String newValue = editNew.getText();
@@ -232,62 +262,129 @@ public class HelloController {
             if (character.getName().equals(name)) {
                 switch (attribute) {
                     case "Atk":
+                        String newAtkStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error atk must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newAtk = Integer.parseInt(newValue);
                         character.setAtk(newAtk);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                     case "Def":
+                        String newDefStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error def must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newDef = Integer.parseInt(newValue);
                         character.setDef(newDef);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
+
                     case "Hp":
+                        String newHpStr = newValue;
+                        if (!isValidInteger(newValue))
+                        {
+                            alertDisplay.setText("Error hp must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                            return;
+                        }
                         int newHp = Integer.parseInt(newValue);
                         character.setHp(newHp);
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                     case "Type":
                         character.setType(CharacterType.valueOf(newValue));
-                        aboutMember.setText(characterList.toString());
-                        aboutTeam.setText(teams.toString());
                 }
+
             }
         }
     }
 
-    public void showDetails(String details, ArrayList<Battlefield> battle){
-        showBattleButton.setOnMouseClicked(event -> {
-            String topThreeAttack = battle.get(0).toString();
-            String lineupDetails = battle.get(1).toString();
-            String bossAtkDetails = battle.get(2).toString();
-            String characterDamage = battle.get(3).toString();
-            topThreeAtk.appendText(topThreeAttack);
-            lineup.appendText(lineupDetails);
-            bossAtk.appendText(bossAtkDetails);
-            charDmg.appendText(characterDamage);
-        });
+    @FXML
+    private Button Top3Button;
+    @FXML
+    private TextArea topThreeAtk;
+
+    @FXML
+    //This method gets information about the top three members that deal the most damage and displays it in the GUI
+    private void topThree() {
+        String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
+        topThreeAtk.setText(topThreeAtkDetails);
+    }
+
+    @FXML
+    private Button LineupButton;
+    @FXML
+    private TextArea lineup;
+
+    @FXML
+    //Information about the recommended lineup is displayed in the GUI
+    private void lineup() {
+        alertDisplay.clear();
+        String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
+        lineup.setText(lineupDetails);
+    }
+
+    @FXML
+    private Button BossButton;
+    @FXML
+    private TextArea bossAtk;
+
+    @FXML
+    //The amount of damage the boss deals is shown in the window
+    private void boss() {
+        int bossAttack = Battlefield.CalculateBossAtk();
+        bossAtk.setText("The Boss Atk is " + bossAttack);
+    }
+
+    @FXML
+    private Button DmgButton;
+    @FXML
+    private TextArea charDmg;
+
+    @FXML
+    //This method displays the amount of damage the character cam deal
+    private void damage() {
+        for (Character character : characterList) {
+            int w = Battlefield.CalculateDamage(character);
+            charDmg.setText("The Character Damage for is: " + w);
+        }
+    }
+
+    @FXML
+    //This method uses a for loop to go through characterList and display their character details
+    private void displayMembers() {
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characterList) {
+            sb.append(character.toString()).append("\n");
+        }
+        aboutMember.setText(sb.toString());
+    }
+
+    @FXML
+    private void displayTeams() {
+        aboutTeam.clear();// Clear the text area
+
+        // Iterate through the teams map and append information about each team to the text area
+        for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
+            aboutTeam.appendText("Team Name: " + entry.getKey() + "\n");
+            aboutTeam.appendText("Members: \n");
+            for (Character character : entry.getValue()) {
+                aboutTeam.appendText(character.toString() + "\n");
+            }
+            aboutTeam.appendText("\n");
+        }
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public boolean isValidInteger(String input) { //check if input values are numeric values
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 }
 
