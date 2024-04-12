@@ -23,6 +23,8 @@ public class HelloApplication extends Application {
         new HelloApplication();
         launch();
     }*/
+
+    //comment
 }
 
 
