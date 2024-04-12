@@ -243,7 +243,7 @@ public class Menu {
                     break;
 
                 case 8: // Calculate Boss Attack
-                    int bossAttack = Battlefield.CalculateBossAtk();
+                    int bossAttack = Battlefield.CalculateBossAtk(characterList);
                     System.out.println("The Boss Atk is " + bossAttack);
                     break;
 
@@ -263,7 +263,7 @@ public class Menu {
 
                     for (Character character : characterList) {
                         if (character.getName().equals(name)) {
-                            int w = Battlefield.CalculateDamage(character);
+                            String w = Battlefield.CalculateDamage(character);
                             System.out.println("The Character Damage is" + w);
                             break;
                         }
@@ -327,3 +327,4 @@ public class Menu {
         FileLoader.load(file, characterList, teams); // calls to FileLoader
     }
 }
+

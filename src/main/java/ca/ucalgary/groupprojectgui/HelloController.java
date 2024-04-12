@@ -162,26 +162,26 @@ public class HelloController {
         }
 
 
-            int hp = Integer.parseInt(createHp.getText());
-            int atk = Integer.parseInt(createAtk.getText());
-            Character newCharacter = getCharacter(name, hp, atk);
+        int hp = Integer.parseInt(createHp.getText());
+        int atk = Integer.parseInt(createAtk.getText());
+        Character newCharacter = getCharacter(name, hp, atk);
 
-            // Check if character with the same name already exists
-            for (Character character : characterList) {
-                if (character.getName().equals(name)) {
-                    alertDisplay.setText("A character with this name already exists.");
-                    alertDisplay.setStyle("-fx-text-fill: red");
-                    return;
-                }
-            }
-
-            characterList.add(newCharacter);
-            StringBuilder sb = new StringBuilder();
-            for (Character character : characterList) {
-                sb.append(character.toString());
-                sb.append("\n"); // for newline
+        // Check if character with the same name already exists
+        for (Character character : characterList) {
+            if (character.getName().equals(name)) {
+                alertDisplay.setText("A character with this name already exists.");
+                alertDisplay.setStyle("-fx-text-fill: red");
+                return;
             }
         }
+
+        characterList.add(newCharacter);
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characterList) {
+            sb.append(character.toString());
+            sb.append("\n"); // for newline
+        }
+    }
 
 
 
@@ -320,8 +320,10 @@ public class HelloController {
     private void lineup() {
         alertDisplay.clear();
         String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
+
         lineup.setText(lineupDetails);
     }
+
 
     @FXML
     private Button BossButton;
@@ -330,7 +332,7 @@ public class HelloController {
 
     @FXML
     private void boss() {
-        int bossAttack = Battlefield.CalculateBossAtk();
+        int bossAttack = Battlefield.CalculateBossAtk((ArrayList<Character>) characterList);
         bossAtk.setText("The Boss Atk is " + bossAttack);
     }
 
@@ -342,8 +344,8 @@ public class HelloController {
     @FXML
     private void damage() {
         for (Character character : characterList) {
-            int w = Battlefield.CalculateDamage(character);
-            charDmg.setText("The Character Damage for is:" + w);
+            String w = Battlefield.CalculateDamage(character);
+            charDmg.setText("The Character Damage:" + w);
         }
     }
 

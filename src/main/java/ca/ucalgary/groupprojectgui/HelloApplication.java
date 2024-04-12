@@ -1,5 +1,9 @@
 package ca.ucalgary.groupprojectgui;
-
+/**
+ *  Arfa Raja, Nethanya Dhaipule, Syed Omar
+ *  April 12, 2024
+ *  T12
+ */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +12,10 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * run GUI
+ *
+ * */
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -18,14 +26,20 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+    /**
+     * run main
+     *
+     * */
     public static void main(String[] args) {
-        if (args.length > 0) {
-            File testFile = new File(args[0]);
-            HelloController controller = new HelloController();
-            controller.shellLoad(testFile);
-            launch(args);
-        } else {
-            System.out.println("Please provide a file as an argument.");
+        if (args != null) {
+            if (args.length > 0) {
+                File testFile = new File(args[0]);
+                HelloController controller = new HelloController();
+                controller.shellLoad(testFile);
+                launch(args);
+            } else {
+                System.out.println("Please provide a file as an argument.");
+            }
         }
     }
 }
