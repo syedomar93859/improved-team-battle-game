@@ -42,18 +42,19 @@ public class HelloController {
     private List<Character> characterList = new ArrayList<>();
     private Map<String, List<Character>> teams = new HashMap<>();
 
-    @FXML
-    private void initialize() {
-        createType.getItems().setAll(CharacterType.values());
-        editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
-    }
 
+    @FXML
     public void shellLoad(File testFile) {
         // Call the FileLoader class's load method
         FileLoader.load(testFile, characterList, teams);
         this.file = testFile; // Set
     }
 
+    @FXML
+    private void initialize() {
+        createType.getItems().setAll(CharacterType.values());
+        editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
+    }
 
     @FXML
     private void handleLoad() {
