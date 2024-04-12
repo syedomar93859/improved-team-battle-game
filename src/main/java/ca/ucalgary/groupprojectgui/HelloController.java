@@ -372,7 +372,7 @@ public class HelloController {
     }
 
 
-    public boolean isValidInteger(String input) {
+    public boolean isValidInteger(String input) { //check if input values are numeric values
         try {
             Integer.parseInt(input);
             return true;
