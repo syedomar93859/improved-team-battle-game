@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Shell.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
@@ -14,6 +16,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -25,19 +34,19 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitLabMergeRequestFiltersHistory">{
-    &quot;lastFilter&quot;: {
+  &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPENED&quot;,
     &quot;assignee&quot;: {
-    &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
-    &quot;username&quot;: &quot;project_4631_bot_90f8ca8b9a17ee6f160f1795e3eb51ea&quot;,
-    &quot;fullname&quot;: &quot;Demo3&quot;
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;project_4631_bot_90f8ca8b9a17ee6f160f1795e3eb51ea&quot;,
+      &quot;fullname&quot;: &quot;Demo3&quot;
     }
-    }
-    }</component>
+  }
+}</component>
   <component name="GitLabMergeRequestsSettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui.git&quot;,
-    &quot;second&quot;: &quot;ffbbc4b7-7632-4e67-86f1-a79e3ed4c704&quot;
+    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui&quot;,
+    &quot;second&quot;: &quot;8f9e2b1e-1d91-4ff0-9fcd-93672002ec9c&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -55,12 +64,15 @@
   &quot;keyToString&quot;: {
     &quot;Application.Game.executor&quot;: &quot;Run&quot;,
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Shell.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.groupprojectgui.Shell.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/target/classes&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -72,16 +84,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\target\classes" />
       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="Shell" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.HelloApplication" />
       <module name="GroupProjectGUI" />
+      <option name="PROGRAM_PARAMETERS" value="testFile" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.*" />
+          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.Shell.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,14 +105,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.Shell" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -117,6 +132,12 @@
       <workItem from="1712617942677" duration="1493000" />
       <workItem from="1712761998699" duration="40000" />
       <workItem from="1712802083553" duration="3626000" />
+      <workItem from="1712896921124" duration="1959000" />
+      <workItem from="1712898922918" duration="132000" />
+      <workItem from="1712899124515" duration="167000" />
+      <workItem from="1712899316695" duration="19000" />
+      <workItem from="1712899342289" duration="2095000" />
+      <workItem from="1712901494407" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />

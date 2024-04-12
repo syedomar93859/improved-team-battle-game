@@ -48,6 +48,12 @@ public class HelloController {
         editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
     }
 
+    public void shellLoad(File testFile) {
+        // Call the FileLoader class's load method
+        FileLoader.load(testFile, characterList, teams);
+        this.file = testFile; // Set
+    }
+
     @FXML
     private void handleLoad() {
         // Create a file chooser
@@ -65,9 +71,7 @@ public class HelloController {
             // Show an error message if no file was selected
             alertDisplay.setText("Failed to load file or invalid file format.");
             alertDisplay.setStyle("-fx-text-fill: red;");
-
         }
-
     }
 
     @FXML
