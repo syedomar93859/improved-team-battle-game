@@ -1,10 +1,6 @@
 package ca.ucalgary.groupprojectgui;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
+import java.io.File;
 import java.io.IOException;
 
 public class Game {
@@ -19,7 +15,6 @@ public class Game {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        //launch(args);
         System.out.println("""
                 Introduction:
                 Your team has entered an undiscovered cave entrance and goes inside to take a safe and short rest in the night. All of you have been travelling on a long voyage 
@@ -38,12 +33,21 @@ public class Game {
                 could consider the riches they may obtain, they moved slightly forward and engaged in a battle.
 
                 BATTLE ENGAGE!""");
+        if (args.length != 1) {
+            System.err.println("Expected one command line argument for filename to load from");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+        File file = new File(filename);
+        if (!file.exists() || !file.canRead()) {
+            System.err.println("Can not load from the file " + filename);
+            System.exit(1);
+        }
+
         Menu.menuLoop();
     }
-
-    /**
-     * Starts the JavaFX application by initializing the stage and loading the main FXML layout.
-     * @param stage The primary stage of the application.
-     * @throws IOException If an error occurs while loading the FXML layout.
-     */
 }
+
+
+

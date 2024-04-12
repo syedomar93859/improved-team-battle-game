@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Shell.xml" beforeDir="false" />
+    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="Added new buttons and fixed the save as feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ca/ucalgary/groupprojectgui/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ca/ucalgary/groupprojectgui/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -44,11 +34,11 @@
     }
     }</component>
   <component name="GitLabMergeRequestsSettings">{
-    &quot;selectedUrlAndAccountId&quot;: {
-    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui&quot;,
-    &quot;second&quot;: &quot;8f9e2b1e-1d91-4ff0-9fcd-93672002ec9c&quot;
-    }
-    }</component>
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui.git&quot;,
+    &quot;second&quot;: &quot;ffbbc4b7-7632-4e67-86f1-a79e3ed4c704&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
     &quot;associatedIndex&quot;: 7
     }</component>
@@ -61,18 +51,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-    &quot;keyToString&quot;: {
+  &quot;keyToString&quot;: {
     &quot;Application.Game.executor&quot;: &quot;Run&quot;,
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Shell.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ca.ucalgary.groupprojectgui.Shell.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/target/classes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,22 +67,20 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-    }
-    }</component>
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\target\classes" />
       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Shell" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.HelloApplication" />
       <module name="GroupProjectGUI" />
-      <option name="PROGRAM_PARAMETERS" value="testFile" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.Shell.*" />
+          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,15 +90,14 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Shell" />
+        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
       </set>
     </attachedChunks>
   </component>
@@ -132,12 +116,7 @@
       <workItem from="1712617942677" duration="1493000" />
       <workItem from="1712761998699" duration="40000" />
       <workItem from="1712802083553" duration="3626000" />
-      <workItem from="1712896921124" duration="1959000" />
-      <workItem from="1712898922918" duration="132000" />
-      <workItem from="1712899124515" duration="167000" />
-      <workItem from="1712899316695" duration="19000" />
-      <workItem from="1712899342289" duration="2095000" />
-      <workItem from="1712901494407" duration="320000" />
+      <workItem from="1712900619034" duration="1809000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -203,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712892757165</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added new buttons and fixed the save as feature">
+      <option name="closed" value="true" />
+      <created>1712895908236</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712895908236</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +215,7 @@
     <MESSAGE value="Try to make sure special methods work with GUI" />
     <MESSAGE value="fixed error" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="Added new buttons and fixed the save as feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new buttons and fixed the save as feature" />
   </component>
 </project>

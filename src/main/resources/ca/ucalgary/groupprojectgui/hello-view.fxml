@@ -221,8 +221,8 @@
                     <children>
                         <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="About Member(s)" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                         <TextArea fx:id="aboutMember" layoutX="11.0" layoutY="50.0" prefHeight="187.0" prefWidth="331.0" />
-                        <Button fx:id="AboutMembersButton" layoutX="15.0" layoutY="248.0" mnemonicParsing="false" onAction="#displayMembers" prefHeight="26.0" prefWidth="96.0" text="Generate" />
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" style="&#10;" text="About Team(s)" textAlignment="CENTER" wrapText="false">
+                       <Button fx:id="AboutMembersButton" layoutX="15.0" layoutY="248.0" mnemonicParsing="false" onAction="#displayMembers" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                         <Label alignment="CENTER" layoutX="14.0" layoutY="332.0" style="&#10;" text="About Team(s)" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x12" />
                             </font>
@@ -231,7 +231,7 @@
                             </textFill>
                         </Label>
                         <TextArea fx:id="aboutTeam" layoutX="11.0" layoutY="370.0" prefHeight="187.0" prefWidth="331.0" />
-                        <Button fx:id="AboutTeamButton" layoutX="11.0" layoutY="570.0" mnemonicParsing="false" onAction="#displayTeams" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                  <Button fx:id="AboutTeamButton" layoutX="11.0" layoutY="570.0" mnemonicParsing="false" onAction="#displayTeams" prefHeight="26.0" prefWidth="96.0" text="Generate" />
                     </children>
                 </AnchorPane>
             </items>
@@ -247,4 +247,3 @@
         <TextField fx:id="alertDisplay" />
     </children>
 </VBox>
-

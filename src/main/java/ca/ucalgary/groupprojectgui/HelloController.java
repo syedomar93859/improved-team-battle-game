@@ -162,26 +162,26 @@ public class HelloController {
         }
 
 
-        int hp = Integer.parseInt(createHp.getText());
-        int atk = Integer.parseInt(createAtk.getText());
-        Character newCharacter = getCharacter(name, hp, atk);
+            int hp = Integer.parseInt(createHp.getText());
+            int atk = Integer.parseInt(createAtk.getText());
+            Character newCharacter = getCharacter(name, hp, atk);
 
-        // Check if character with the same name already exists
-        for (Character character : characterList) {
-            if (character.getName().equals(name)) {
-                alertDisplay.setText("A character with this name already exists.");
-                alertDisplay.setStyle("-fx-text-fill: red");
-                return;
+            // Check if character with the same name already exists
+            for (Character character : characterList) {
+                if (character.getName().equals(name)) {
+                    alertDisplay.setText("A character with this name already exists.");
+                    alertDisplay.setStyle("-fx-text-fill: red");
+                    return;
+                }
+            }
+
+            characterList.add(newCharacter);
+            StringBuilder sb = new StringBuilder();
+            for (Character character : characterList) {
+                sb.append(character.toString());
+                sb.append("\n"); // for newline
             }
         }
-
-        characterList.add(newCharacter);
-        StringBuilder sb = new StringBuilder();
-        for (Character character : characterList) {
-            sb.append(character.toString());
-            sb.append("\n"); // for newline
-        }
-    }
 
 
 
@@ -306,7 +306,6 @@ public class HelloController {
     private TextArea topThreeAtk;
 
     @FXML
-    //This method gets information about the top three members that deal the most damage and displays it in the GUI
     private void topThree() {
         String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
         topThreeAtk.setText(topThreeAtkDetails);
@@ -318,7 +317,6 @@ public class HelloController {
     private TextArea lineup;
 
     @FXML
-    //Information about the recommended lineup is displayed in the GUI
     private void lineup() {
         alertDisplay.clear();
         String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
@@ -331,7 +329,6 @@ public class HelloController {
     private TextArea bossAtk;
 
     @FXML
-    //The amount of damage the boss deals is shown in the window
     private void boss() {
         int bossAttack = Battlefield.CalculateBossAtk();
         bossAtk.setText("The Boss Atk is " + bossAttack);
@@ -343,16 +340,14 @@ public class HelloController {
     private TextArea charDmg;
 
     @FXML
-    //This method displays the amount of damage the character cam deal
     private void damage() {
         for (Character character : characterList) {
             int w = Battlefield.CalculateDamage(character);
-            charDmg.setText("The Character Damage for is: " + w);
+            charDmg.setText("The Character Damage for is:" + w);
         }
     }
 
     @FXML
-    //This method uses a for loop to go through characterList and display their character details
     private void displayMembers() {
         StringBuilder sb = new StringBuilder();
         for (Character character : characterList) {
