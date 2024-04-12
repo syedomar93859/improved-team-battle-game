@@ -14,8 +14,6 @@ import java.util.*;
 public class HelloController {
 
     private File file;
-    @FXML
-    private Button showBattleButton;
 
     private Stage stage;
 
@@ -30,6 +28,14 @@ public class HelloController {
 
     @FXML
     private MenuItem about;
+
+    @FXML
+    private Button showBattleButton;
+
+    @FXML
+    private Button AboutMembersButton;
+    @FXML
+    private Button AboutTeamButton;
 
     @FXML
     private TextField alertDisplay;
@@ -78,7 +84,7 @@ public class HelloController {
 
     @FXML
     public void handleSaveAsFile() {
-        if (teams != null && file != null && characterList != null) {
+        if (teams != null && characterList != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save File");
             File selectedFile = fileChooser.showSaveDialog(stage);
@@ -150,7 +156,7 @@ public class HelloController {
             sb.append(character.toString());
             sb.append("\n"); // for newline
         }
-        aboutMember.setText(sb.toString());
+
     }
 
     private Character getCharacter(String name, int hp, int atk) {
@@ -205,7 +211,7 @@ public class HelloController {
             }
             sb.append("\n");
         }
-        aboutTeam.setText(sb.toString());
+
     }
 
     @FXML
@@ -295,5 +301,30 @@ public class HelloController {
             charDmg.setText("The Character Damage for is:" + w);
         }
     }
+
+    @FXML
+    private void displayMembers() {
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characterList) {
+            sb.append(character.toString()).append("\n");
+        }
+        aboutMember.setText(sb.toString());
+    }
+
+    @FXML
+    private void displayTeams() {
+        aboutTeam.clear();// Clear the text area
+
+        // Iterate through the teams map and append information about each team to the text area
+        for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {
+            aboutTeam.appendText("Team Name: " + entry.getKey() + "\n");
+            aboutTeam.appendText("Members: \n");
+            for (Character character : entry.getValue()) {
+                aboutTeam.appendText(character.toString() + "\n");
+            }
+            aboutTeam.appendText("\n");
+        }
+    }
+
 }
 
