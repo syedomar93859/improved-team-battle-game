@@ -330,7 +330,7 @@ public class HelloController {
 
     @FXML
     private void boss() {
-        int bossAttack = Battlefield.CalculateBossAtk();
+        int bossAttack = Battlefield.CalculateBossAtk((ArrayList<Character>) characterList);
         bossAtk.setText("The Boss Atk is " + bossAttack);
     }
 

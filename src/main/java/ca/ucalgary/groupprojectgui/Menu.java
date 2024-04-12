@@ -243,7 +243,7 @@ public class Menu {
                     break;
 
                 case 8: // Calculate Boss Attack
-                    int bossAttack = Battlefield.CalculateBossAtk();
+                    int bossAttack = Battlefield.CalculateBossAtk(characterList);
                     System.out.println("The Boss Atk is " + bossAttack);
                     break;
 
