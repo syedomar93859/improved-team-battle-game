@@ -52,10 +52,12 @@ public class Battlefield{
      */
     public static String AskTopThreeAtk(ArrayList<Character> characterList) {
         HashMap<String, Integer> partyDamage = new HashMap<String, Integer>();
+        ArrayList<String> names = new ArrayList<String>();
         // It goes through an arraylist filled with all the members of party, and gets each member's type and attack.
         for (Character member : characterList) {
             //  The type and attack of each member are stored as pairs in the partyDamage hashmap.
             partyDamage.put(member.getType().toString(), member.getAtk());
+            names.add(member.getName());
         }
         // Then all the details in partyDamage are used to fill and alter an array called TopThreeMembers
         // with the 3 members that deal the most amount of damage.
@@ -80,9 +82,11 @@ public class Battlefield{
         }
         // Finally, TopThreeMembers is used to print the 3 members who have the highest attack power.
         String Top3Details = "The members who deal the most damage are:\n";
+        int count = 0;
         for (String member : TopThreeMembers) {
             if (member != null) {
-                Top3Details += member.split(":")[0] + " with damage: " + member.split(":")[1] + "\n";
+                Top3Details += member.split(":")[0] + names.get(count) + " with damage: " + member.split(":")[1] + "\n";
+                count++;
             }
         }
         return Top3Details;
@@ -117,7 +121,8 @@ public class Battlefield{
      *
      * @return int damage from member
      */
-    public static int CalculateDamage(Character partyMember) {
+    public static String CalculateDamage(Character partyMember) {
+        String name = partyMember.getName();
         double finalDamage = 0;
         if (partyMember.getType() == CharacterType.HEALER){
             finalDamage = partyMember.getAtk();
@@ -128,7 +133,7 @@ public class Battlefield{
         } else if (partyMember.getType() == CharacterType.SHIELDUSER){
             finalDamage = partyMember.getAtk();
         }
-        return (int) Math.round(finalDamage);
+        return name + " deals " + Math.round(finalDamage);
     }
 
 }

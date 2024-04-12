@@ -306,7 +306,7 @@ public class HelloController {
     private TextArea topThreeAtk;
 
     @FXML
-    private void topThree() {
+    private void topThree(ActionEvent event) {
         String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
         topThreeAtk.setText(topThreeAtkDetails);
     }
@@ -317,11 +317,13 @@ public class HelloController {
     private TextArea lineup;
 
     @FXML
-    private void lineup() {
+    private void lineup(ActionEvent event) {
         alertDisplay.clear();
         String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
+
         lineup.setText(lineupDetails);
     }
+
 
     @FXML
     private Button BossButton;
@@ -329,7 +331,7 @@ public class HelloController {
     private TextArea bossAtk;
 
     @FXML
-    private void boss() {
+    private void boss(ActionEvent event) {
         int bossAttack = Battlefield.CalculateBossAtk((ArrayList<Character>) characterList);
         bossAtk.setText("The Boss Atk is " + bossAttack);
     }
@@ -340,9 +342,9 @@ public class HelloController {
     private TextArea charDmg;
 
     @FXML
-    private void damage() {
+    private void damage(ActionEvent event) {
         for (Character character : characterList) {
-            int w = Battlefield.CalculateDamage(character);
+            String w = Battlefield.CalculateDamage(character);
             charDmg.setText("The Character Damage for is:" + w);
         }
     }

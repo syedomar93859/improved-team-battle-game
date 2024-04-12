@@ -263,7 +263,7 @@ public class Menu {
 
                     for (Character character : characterList) {
                         if (character.getName().equals(name)) {
-                            int w = Battlefield.CalculateDamage(character);
+                            String w = Battlefield.CalculateDamage(character);
                             System.out.println("The Character Damage is" + w);
                             break;
                         }

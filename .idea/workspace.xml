@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="Added new buttons and fixed the save as feature">
+    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="Added characterList parameter for CalculateBossAtk method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,7 @@
       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.HelloApplication" />
       <module name="GroupProjectGUI" />
@@ -190,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712895908236</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added characterList parameter for CalculateBossAtk method">
+      <option name="closed" value="true" />
+      <created>1712931842292</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712931842292</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +222,9 @@
     <MESSAGE value="Try to make sure special methods work with GUI" />
     <MESSAGE value="fixed error" />
     <MESSAGE value="commit" />
+    <MESSAGE value="Finishing comments and CalculateBossAtk method" />
     <MESSAGE value="Added new buttons and fixed the save as feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new buttons and fixed the save as feature" />
+    <MESSAGE value="Added characterList parameter for CalculateBossAtk method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added characterList parameter for CalculateBossAtk method" />
   </component>
 </project>
