@@ -158,14 +158,14 @@
                         <Button fx:id="createCharac" layoutX="119.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#createCharacter" prefHeight="26.0" prefWidth="96.0" text="Create" />
                         <Button fx:id="createTeamButton" layoutX="122.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#createTeamGUI" prefHeight="26.0" prefWidth="96.0" text="Create" />
                         <Button fx:id="editButton" layoutX="122.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#editCharacterGUI" prefHeight="26.0" prefWidth="96.0" text="Edit" />
-                  <Label alignment="CENTER" layoutX="4.0" layoutY="383.0" minWidth="60.0" prefHeight="20.0" prefWidth="118.0" style="&#10;" text=" (Seperate with commas)" textAlignment="CENTER" wrapText="false">
-                     <font>
-                        <Font size="9.0" fx:id="x13211" />
-                     </font>
-                     <textFill>
-                        <Color red="0.624" green="0.624" blue="0.624" fx:id="x23211" />
-                     </textFill>
-                  </Label>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="383.0" minWidth="60.0" prefHeight="20.0" prefWidth="118.0" style="&#10;" text=" (Seperate with commas)" textAlignment="CENTER" wrapText="false">
+                            <font>
+                                <Font size="9.0" fx:id="x13211" />
+                            </font>
+                            <textFill>
+                                <Color red="0.624" green="0.624" blue="0.624" fx:id="x23211" />
+                            </textFill>
+                        </Label>
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -209,10 +209,10 @@
                                     </textFill>
                                 </Label>
                                 <TextArea fx:id="charDmg" layoutX="24.0" layoutY="398.0" prefHeight="86.0" prefWidth="439.0" />
-                        <Button fx:id="Top3Button" layoutX="287.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#topThree" prefHeight="26.0" prefWidth="96.0" text="Generate" />
-                        <Button fx:id="LineupButton" layoutX="286.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#lineup" prefHeight="26.0" prefWidth="96.0" text="Generate" />
-                        <Button fx:id="BossButton" layoutX="287.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#boss" prefHeight="26.0" prefWidth="96.0" text="Generate" />
-                        <Button fx:id="DmgButton" layoutX="291.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#damage" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                                <Button fx:id="Top3Button" layoutX="287.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#topThree" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                                <Button fx:id="LineupButton" layoutX="286.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#lineup" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                                <Button fx:id="BossButton" layoutX="287.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#boss" prefHeight="26.0" prefWidth="96.0" text="Generate" />
+                                <Button fx:id="DmgButton" layoutX="291.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#damage" prefHeight="26.0" prefWidth="96.0" text="Generate" />
                             </children>
                         </AnchorPane>
                     </content>
