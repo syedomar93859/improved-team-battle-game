@@ -7,8 +7,9 @@ package ca.ucalgary.groupprojectgui;
 
 
 import java.util.*;
+import java.util.Map;
 
-public class Battlefield{
+public class Battlefield {
 
     public Battlefield() {
 
@@ -16,7 +17,8 @@ public class Battlefield{
 
     /**
      * CalculateBossAtk calculates how much damage the boss deals based on a random integer between 11 and 0 and taking
-     *into account the character types og all the members
+     * into account the character types og all the members
+     *
      * @return int with boss's damage
      */
     public static Integer CalculateBossAtk(ArrayList<Character> characterList) {
@@ -46,18 +48,16 @@ public class Battlefield{
         }
     }
 
+
     /**
      * AskTopThreeAtk goes through every party member to determine which are 3 highest dealing damage members.
-     *
      */
     public static String AskTopThreeAtk(ArrayList<Character> characterList) {
         HashMap<String, Integer> partyDamage = new HashMap<String, Integer>();
-        ArrayList<String> names = new ArrayList<String>();
         // It goes through an arraylist filled with all the members of party, and gets each member's type and attack.
         for (Character member : characterList) {
             //  The type and attack of each member are stored as pairs in the partyDamage hashmap.
             partyDamage.put(member.getType().toString(), member.getAtk());
-            names.add(member.getName());
         }
         // Then all the details in partyDamage are used to fill and alter an array called TopThreeMembers
         // with the 3 members that deal the most amount of damage.
@@ -82,11 +82,9 @@ public class Battlefield{
         }
         // Finally, TopThreeMembers is used to print the 3 members who have the highest attack power.
         String Top3Details = "The members who deal the most damage are:\n";
-        int count = 0;
         for (String member : TopThreeMembers) {
             if (member != null) {
-                Top3Details += member.split(":")[0] + names.get(count) + " with damage: " + member.split(":")[1] + "\n";
-                count++;
+                Top3Details += member.split(":")[0] + " with damage: " + member.split(":")[1] + "\n";
             }
         }
         return Top3Details;
@@ -121,20 +119,61 @@ public class Battlefield{
      *
      * @return int damage from member
      */
-    public static String CalculateDamage(Character partyMember) {
-        String name = partyMember.getName();
-        double finalDamage = 0;
-        if (partyMember.getType() == CharacterType.HEALER){
-            finalDamage = partyMember.getAtk();
-        } else if (partyMember.getType() == CharacterType.SWORDSMAN){
-            finalDamage = partyMember.getAtk() * 1.5;
-        } else if (partyMember.getType() == CharacterType.MARKSMAN){
-            finalDamage = partyMember.getAtk() * 1.15;
-        } else if (partyMember.getType() == CharacterType.SHIELDUSER){
-            finalDamage = partyMember.getAtk();
-        }
-        return name + " deals " + Math.round(finalDamage);
-    }
+    public static String CalculateDamage(Character partyMember, ArrayList<Character> characterList) {
+        ArrayList<String> charactersAndDamages = new ArrayList<String>();
+        for (Character member : characterList) {
+            String name = member.getName();
+            int attack = member.getAtk();
 
+            // Modify attack based on character type
+            if (member.getType() == CharacterType.SWORDSMAN) {
+                attack = (int) (attack * 1.5);
+            } else if (member.getType() == CharacterType.MARKSMAN) {
+                attack = (int) (attack * 1.15);
+            } else if (member.getType() == CharacterType.SHIELDUSER) {
+                attack = (int) (attack * 0.90);
+            }
+
+            // Add member and damage to the list
+            charactersAndDamages.add(name + ":" + attack);
+        }
+
+        // Sort the list based on attack values in descending order
+        charactersAndDamages.sort((a, b) -> {
+            int damageA = Integer.parseInt(a.split(":")[1]);
+            int damageB = Integer.parseInt(b.split(":")[1]);
+            return Integer.compare(damageB, damageA);
+        });
+
+        // Create a formatted string to display characters and their damages
+        StringBuilder result = new StringBuilder();
+        int count = 1;
+        String positionMessage;
+        for (String characterAndDamage : charactersAndDamages) {
+            String[] characterDetails = characterAndDamage.split(":");
+            String name = characterDetails[0];
+            int attackNum = Integer.parseInt(characterDetails[1]);
+            if (count == 1) {
+                positionMessage = name + " deals the most damage in the party with " + attackNum + " attack";
+            } else if (count == charactersAndDamages.size()) {
+                positionMessage = name + " deals the least damage in the party with " + attackNum + " attack";
+            } else {
+                if (count == 2) {
+                    positionMessage = name + " deals the 2nd most damage in the party with " + attackNum + " attack";
+                } else if (count == 3) {
+                    positionMessage = name + " deals the 3rd most damage in the party with " + attackNum + " attack";
+                } else {
+                    positionMessage = name + " deals the " + count + "th damage in the party with " + attackNum + " attack";
+                }
+            }
+            count++;
+            result.append(positionMessage).append("\n");
+        }
+        return result.toString();
+    }
 }
+
+
+
+
 

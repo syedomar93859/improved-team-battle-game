@@ -42,18 +42,19 @@ public class HelloController {
     private List<Character> characterList = new ArrayList<>();
     private Map<String, List<Character>> teams = new HashMap<>();
 
-    @FXML
-    private void initialize() {
-        createType.getItems().setAll(CharacterType.values());
-        editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
-    }
 
+    @FXML
     public void shellLoad(File testFile) {
         // Call the FileLoader class's load method
         FileLoader.load(testFile, characterList, teams);
         this.file = testFile; // Set
     }
 
+    @FXML
+    private void initialize() {
+        createType.getItems().setAll(CharacterType.values());
+        editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
+    }
 
     @FXML
     private void handleLoad() {
@@ -162,26 +163,26 @@ public class HelloController {
         }
 
 
-            int hp = Integer.parseInt(createHp.getText());
-            int atk = Integer.parseInt(createAtk.getText());
-            Character newCharacter = getCharacter(name, hp, atk);
+        int hp = Integer.parseInt(createHp.getText());
+        int atk = Integer.parseInt(createAtk.getText());
+        Character newCharacter = getCharacter(name, hp, atk);
 
-            // Check if character with the same name already exists
-            for (Character character : characterList) {
-                if (character.getName().equals(name)) {
-                    alertDisplay.setText("A character with this name already exists.");
-                    alertDisplay.setStyle("-fx-text-fill: red");
-                    return;
-                }
-            }
-
-            characterList.add(newCharacter);
-            StringBuilder sb = new StringBuilder();
-            for (Character character : characterList) {
-                sb.append(character.toString());
-                sb.append("\n"); // for newline
+        // Check if character with the same name already exists
+        for (Character character : characterList) {
+            if (character.getName().equals(name)) {
+                alertDisplay.setText("A character with this name already exists.");
+                alertDisplay.setStyle("-fx-text-fill: red");
+                return;
             }
         }
+
+        characterList.add(newCharacter);
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characterList) {
+            sb.append(character.toString());
+            sb.append("\n"); // for newline
+        }
+    }
 
 
 
@@ -306,7 +307,7 @@ public class HelloController {
     private TextArea topThreeAtk;
 
     @FXML
-    private void topThree(ActionEvent event) {
+    private void topThree() {
         String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
         topThreeAtk.setText(topThreeAtkDetails);
     }
@@ -317,7 +318,7 @@ public class HelloController {
     private TextArea lineup;
 
     @FXML
-    private void lineup(ActionEvent event) {
+    private void lineup() {
         alertDisplay.clear();
         String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);
 
@@ -331,7 +332,7 @@ public class HelloController {
     private TextArea bossAtk;
 
     @FXML
-    private void boss(ActionEvent event) {
+    private void boss() {
         int bossAttack = Battlefield.CalculateBossAtk((ArrayList<Character>) characterList);
         bossAtk.setText("The Boss Atk is " + bossAttack);
     }
@@ -342,10 +343,10 @@ public class HelloController {
     private TextArea charDmg;
 
     @FXML
-    private void damage(ActionEvent event) {
+    private void damage() {
         for (Character character : characterList) {
-            String w = Battlefield.CalculateDamage(character);
-            charDmg.setText("The Character Damage for is:" + w);
+            String w = Battlefield.CalculateDamage(character, (ArrayList<Character>) characterList);
+            charDmg.setText(w);
         }
     }
 
