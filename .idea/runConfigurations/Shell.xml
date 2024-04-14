@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Shell" type="Application" factoryName="Application">
+  <configuration default="false" name="Shell" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.Shell" />
     <module name="GroupProjectGUI" />
     <option name="PROGRAM_PARAMETERS" value="testFile" />

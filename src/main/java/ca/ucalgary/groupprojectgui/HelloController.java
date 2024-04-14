@@ -263,40 +263,39 @@ public class HelloController {
             if (character.getName().equals(name)) {
                 switch (attribute) {
                     case "Atk":
-                        String newAtkStr = newValue;
-                        if (!isValidInteger(newValue))
-                        {
+                        try {
+                            int newAtk = Integer.parseInt(newValue);
+                            character.setAtk(newAtk);
+                        }
+                        catch (NumberFormatException e) {
                             alertDisplay.setText("Error atk must be valid integer");
                             alertDisplay.setStyle("-fx-text-fill: red");
-                            return;
                         }
-                        int newAtk = Integer.parseInt(newValue);
-                        character.setAtk(newAtk);
+                        break;
                     case "Def":
-                        String newDefStr = newValue;
-                        if (!isValidInteger(newValue))
-                        {
-                            alertDisplay.setText("Error def must be valid integer");
-                            alertDisplay.setStyle("-fx-text-fill: red");
-                            return;
+                        try {
+                            int newDef = Integer.parseInt(newValue);
+                            character.setDef(newDef);
                         }
-                        int newDef = Integer.parseInt(newValue);
-                        character.setDef(newDef);
-
+                        catch (NumberFormatException e) {
+                            alertDisplay.setText("Error atk must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                        }
+                        break;
                     case "Hp":
-                        String newHpStr = newValue;
-                        if (!isValidInteger(newValue))
-                        {
-                            alertDisplay.setText("Error hp must be valid integer");
-                            alertDisplay.setStyle("-fx-text-fill: red");
-                            return;
-                        }
+                        try {
                         int newHp = Integer.parseInt(newValue);
                         character.setHp(newHp);
+                        }
+                        catch (NumberFormatException e) {
+                            alertDisplay.setText("Error atk must be valid integer");
+                            alertDisplay.setStyle("-fx-text-fill: red");
+                        }
+                        break;
                     case "Type":
                         character.setType(CharacterType.valueOf(newValue));
+                        break;
                 }
-
             }
         }
     }
