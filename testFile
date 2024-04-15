@@ -1,8 +1,0 @@
-Characters
-A,HEALER,1,1,1
-B,MARKSMAN,2,2,2
-C,SWORDSMAN,3,3,3
-D,SHIELDUSER,4,4,4
-
-Teams
-team,A;B;C;D;
