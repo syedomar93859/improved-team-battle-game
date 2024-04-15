@@ -1,9 +1,11 @@
-package ca.ucalgary.groupprojectgui;
 /**
  *  Arfa Raja, Nethanya Dhaipule, Syed Omar
  *  April 12, 2024
  *  T12
  */
+
+package ca.ucalgary.groupprojectgui;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,10 +14,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * run GUI
- * */
+
 public class HelloApplication extends Application {
+
+    /**
+     * The main method of the application.
+     *
+     * @param stage the initial stage to be set
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -34,27 +40,24 @@ public class HelloApplication extends Application {
             controller.shellLoad(testFile);
         }
     }
-
+    /**
+     * Allows main to run from IDE
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
-        // This main method will be used when running from the IDE
         Application.launch(args);
     }
 }
 
-/**
- * run main
- */
 class Shell {
+
+    /**
+     * Allows main to run from terminal
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
-        // This main method will be used when running from the terminal
         Application.launch(HelloApplication.class, args);
     }
 }
-
-
-
-
-
-
-
-

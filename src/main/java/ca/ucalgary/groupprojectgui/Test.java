@@ -1,6 +1,6 @@
 /**
  *  Arfa Raja, Nethanya Dhaipule, Syed Omar
- *  March 20, 2024
+ *  April 15, 2024
  *  T12
  */
 
@@ -264,5 +264,3 @@ public class Test {
         assertTrue(2 == finalDamage);
     }
 }
-
-

@@ -327,4 +327,3 @@ public class Menu {
         FileLoader.load(file, characterList, teams); // calls to FileLoader
     }
 }
-

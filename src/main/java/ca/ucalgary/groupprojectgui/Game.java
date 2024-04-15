@@ -1,7 +1,12 @@
+/**
+ *  Arfa Raja, Nethanya Dhaipule, Syed Omar
+ *  April 15, 2024
+ *  T12
+ */
+
 package ca.ucalgary.groupprojectgui;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Game {
     public Game() {
@@ -48,6 +53,3 @@ public class Game {
         Menu.menuLoop();
     }
 }
-
-
-

@@ -1,6 +1,6 @@
 /**
  *  Arfa Raja, Nethanya Dhaipule, Syed Omar
- *  March 20, 2024
+ *  April 15, 2024
  *  T12
  */
 package ca.ucalgary.groupprojectgui;
@@ -16,8 +16,9 @@ public class Battlefield {
     }
 
     /**
-     * CalculateBossAtk calculates how much damage the boss deals based on a random integer between 11 and 0 and taking
-     * into account the character types og all the members
+     * CalculateBossAtk calculates how much damage the boss deals based on a random integer between 11 and 0 and taking into account the character types og all the members
+     *
+     * @param characterList the list of characters
      *
      * @return int with boss's damage
      */
@@ -48,9 +49,12 @@ public class Battlefield {
         }
     }
 
-
     /**
      * AskTopThreeAtk goes through every party member to determine which are 3 highest dealing damage members.
+     *
+     * @param characterList the list of characters
+     *
+     * @return String with top 3 attack members
      */
     public static String AskTopThreeAtk(ArrayList<Character> characterList) {
         HashMap<String, Integer> partyDamage = new HashMap<String, Integer>();
@@ -92,6 +96,10 @@ public class Battlefield {
 
     /**
      * HPAndDefLineup is a method that recommends a lineup of 4 characters, one from each type, based on the highest HP and DEF:
+     *
+     *  @param characterList the list of characters
+     *
+     * @return String with top hp and def lineup
      */
     public static String HPAndDefLineup(ArrayList<Character> characterList) {
         HashMap<String, Character> bestCharacters = new HashMap<String, Character>();
@@ -116,6 +124,9 @@ public class Battlefield {
 
     /**
      * The CalculateDamage method calculates the damage dealt by a member, using their class and sometimes a multiplier.
+     *
+     * @param partyMember the character to calculate damage for
+     * @param characterList list of characters
      *
      * @return int damage from member
      */
@@ -172,8 +183,3 @@ public class Battlefield {
         return result.toString();
     }
 }
-
-
-
-
-

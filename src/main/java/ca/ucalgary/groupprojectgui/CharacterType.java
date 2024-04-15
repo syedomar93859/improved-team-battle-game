@@ -1,5 +1,5 @@
 /**  Arfa Raja, Nethanya Dhaipule, Syed Omar
- *  March 20, 2024
+ *  April 15, 2024
  *  T12
  */
 package ca.ucalgary.groupprojectgui;
@@ -12,4 +12,3 @@ public enum CharacterType {
     SWORDSMAN,
     SHIELDUSER
 }
-

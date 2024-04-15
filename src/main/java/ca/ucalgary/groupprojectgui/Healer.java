@@ -1,10 +1,10 @@
 /**
  *  Arfa Raja, Nethanya Dhaipule, Syed Omar
- *  March 20, 2024
+ *  April 15, 2024
  *  T12
  */
-package ca.ucalgary.groupprojectgui;
 
+package ca.ucalgary.groupprojectgui;
 
 class Healer extends Character {
 
@@ -18,6 +18,5 @@ class Healer extends Character {
      */
     public Healer(String name, int hp, int atk, int def) {
         super(name, hp, atk, def, CharacterType.HEALER);  // Call character constructor
-
     }
 }

@@ -1,48 +1,48 @@
+/**
+ *  Arfa Raja, Nethanya Dhaipule, Syed Omar
+ *  April 12, 2024
+ *  T12
+ */
+
 package ca.ucalgary.groupprojectgui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.util.*;
 
+
 public class HelloController {
 
+    // initialize variables
     private File file;
-
     private Stage stage;
-
     @FXML
     private MenuItem load;
-
     @FXML
     private MenuItem save;
-
     @FXML
     private MenuItem quit;
-
     @FXML
     private MenuItem about;
-
     @FXML
     private Button showBattleButton;
-
     @FXML
     private Button AboutMembersButton;
     @FXML
     private Button AboutTeamButton;
-
     @FXML
     private TextField alertDisplay;
     private List<Character> characterList = new ArrayList<>();
     private Map<String, List<Character>> teams = new HashMap<>();
 
-
+    /**
+     * Allows file to load when running from terminal
+     *
+     * @param testFile the file to be loaded
+     */
     @FXML
     public void shellLoad(File testFile) {
         // Call the FileLoader class's load method
@@ -50,12 +50,18 @@ public class HelloController {
         this.file = testFile; // Set
     }
 
+    /**
+     * initializes ComboBoxes
+     */
     @FXML
     private void initialize() {
         createType.getItems().setAll(CharacterType.values());
         editAttribute.getItems().setAll("Atk", "Def", "Hp", "Type");
     }
 
+    /**
+     * Allows file to load in GUI
+     */
     @FXML
     private void handleLoad() {
         alertDisplay.clear();
@@ -74,11 +80,12 @@ public class HelloController {
             // Show an error message if no file was selected
             alertDisplay.setText("Failed to load file or invalid file format.");
             alertDisplay.setStyle("-fx-text-fill: red;");
-
         }
-
     }
 
+    /**
+     * Allows file to save in GUI
+     */
     @FXML
     public void handleSaveFile() {
         alertDisplay.clear();
@@ -86,12 +93,17 @@ public class HelloController {
             FileSaver.save(file, characterList, teams);
             alertDisplay.setText("Success! File saved");
             alertDisplay.setStyle("-fx-text-fill: blue;");
+
+        // error checking
         } else {
             alertDisplay.setText("No file loaded to save. Please save new file.");
             alertDisplay.setStyle("-fx-text-fill: red");
         }
     }
 
+    /**
+     * Allows file to save as new file in GUI
+     */
     @FXML
     public void handleSaveAsFile() {
         alertDisplay.clear();
@@ -106,25 +118,31 @@ public class HelloController {
                     this.file = selectedFile;
                 }
             }
+
+        // error checking
         } else {
             alertDisplay.setText("Error! No game loaded to save.");
             alertDisplay.setStyle("-fx-text-fill: red;");
         }
     }
 
+    /**
+     * Allows file to quit in GUI
+     */
     @FXML
     private void handleQuit() {
         System.exit(0);
     }
 
-
+    /**
+     * Displays about authors and program in GUI
+     */
     @FXML
     private void about() {
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("Message");
-        alert.setContentText("Author: Nethanya Dhaiphule, Arfa Raja, Syed Omar\nVersion: v1.0\nThis is a ...description");
+        alert.setContentText("Author: Nethanya Dhaiphule, Arfa Raja, Syed Omar\nVersion: v1.0\nThis is a program to track information about party characters and teams.");
         alert.showAndWait();
     }
 
@@ -162,7 +180,6 @@ public class HelloController {
             return;
         }
 
-
         int hp = Integer.parseInt(createHp.getText());
         int atk = Integer.parseInt(createAtk.getText());
         Character newCharacter = getCharacter(name, hp, atk);
@@ -184,8 +201,15 @@ public class HelloController {
         }
     }
 
-
-
+    /**
+     * Used in createCharacter to get a character
+     *
+     * @param name String name of character
+     * @param atk int atk of character
+     * @param hp int hp of character
+     *
+     * @return Character object
+     */
     private Character getCharacter(String name, int hp, int atk) {
         alertDisplay.clear();
         int def = Integer.parseInt(createDef.getText());
@@ -214,6 +238,9 @@ public class HelloController {
     @FXML
     private TextArea aboutTeam;
 
+    /**
+     * Used to create a team in the GUI
+     */
     @FXML
     private void createTeamGUI() {
         alertDisplay.clear();
@@ -240,7 +267,6 @@ public class HelloController {
             }
             sb.append("\n");
         }
-
     }
 
     @FXML
@@ -252,13 +278,19 @@ public class HelloController {
     @FXML
     private Button editButton;
 
+    /**
+     * Used to edit a character in the GUI
+     */
     @FXML
     private void editCharacterGUI() {
+
+        // attributes
         alertDisplay.clear();
         String name = editName.getText();
         String attribute = editAttribute.getValue();
         String newValue = editNew.getText();
 
+        // iterate through list
         for (Character character : characterList) {
             if (character.getName().equals(name)) {
                 switch (attribute) {
@@ -266,6 +298,7 @@ public class HelloController {
                         try {
                             int newAtk = Integer.parseInt(newValue);
                             character.setAtk(newAtk);
+                        // error checking
                         }
                         catch (NumberFormatException e) {
                             alertDisplay.setText("Error atk must be valid integer");
@@ -277,6 +310,7 @@ public class HelloController {
                             int newDef = Integer.parseInt(newValue);
                             character.setDef(newDef);
                         }
+                        // error checking
                         catch (NumberFormatException e) {
                             alertDisplay.setText("Error atk must be valid integer");
                             alertDisplay.setStyle("-fx-text-fill: red");
@@ -287,6 +321,7 @@ public class HelloController {
                         int newHp = Integer.parseInt(newValue);
                         character.setHp(newHp);
                         }
+                        // error checking
                         catch (NumberFormatException e) {
                             alertDisplay.setText("Error atk must be valid integer");
                             alertDisplay.setStyle("-fx-text-fill: red");
@@ -305,6 +340,9 @@ public class HelloController {
     @FXML
     private TextArea topThreeAtk;
 
+    /**
+     * Used to run special method AskTopThreeAtk in GUI
+     */
     @FXML
     private void topThree() {
         String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);
@@ -316,6 +354,9 @@ public class HelloController {
     @FXML
     private TextArea lineup;
 
+    /**
+     * Used to run special method HPAndDefLineup in GUI
+     */
     @FXML
     private void lineup() {
         alertDisplay.clear();
@@ -324,12 +365,14 @@ public class HelloController {
         lineup.setText(lineupDetails);
     }
 
-
     @FXML
     private Button BossButton;
     @FXML
     private TextArea bossAtk;
 
+    /**
+     * Used to run special method CalculateBossAtk in GUI
+     */
     @FXML
     private void boss() {
         int bossAttack = Battlefield.CalculateBossAtk((ArrayList<Character>) characterList);
@@ -341,6 +384,9 @@ public class HelloController {
     @FXML
     private TextArea charDmg;
 
+    /**
+     * Used to run special method CalculateDamage in GUI
+     */
     @FXML
     private void damage() {
         for (Character character : characterList) {
@@ -349,6 +395,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Used to display all members in GUI
+     */
     @FXML
     private void displayMembers() {
         StringBuilder sb = new StringBuilder();
@@ -358,6 +407,9 @@ public class HelloController {
         aboutMember.setText(sb.toString());
     }
 
+    /**
+     * Used to display all teams in GUI
+     */
     @FXML
     private void displayTeams() {
         aboutTeam.clear();// Clear the text area
@@ -373,7 +425,13 @@ public class HelloController {
         }
     }
 
-
+    /**
+     * Used to validate integers
+     *
+     * @param input String value of input
+     *
+     * @return True if a valid integer
+     */
     public boolean isValidInteger(String input) { //check if input values are numeric values
         try {
             Integer.parseInt(input);
@@ -382,6 +440,4 @@ public class HelloController {
             return false;
         }
     }
-
 }
-
