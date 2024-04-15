@@ -22,17 +22,17 @@ public class Test {
     @org.junit.Test
     public void testCheckCharacter() {
         // Given: Populate a list with different types of characters
-        List<java.lang.Character> characterList = new ArrayList<>();
+        List<Character> characterList = new ArrayList<>();
         characterList.add(new Healer("Healer1", 100, 50, 30));
         characterList.add(new Marksman("Marksman1", 120, 60, 40));
         characterList.add(new Swordsman("Swordsman1", 150, 70, 50));
         characterList.add(new ShieldUser("ShieldUser1", 200, 80, 60));
 
         // When: Check if characters of each type exist
-        boolean healerExists = java.lang.Character.CheckCharacter(1, characterList);
-        boolean marksmanExists = java.lang.Character.CheckCharacter(2, characterList);
-        boolean swordsmanExists = java.lang.Character.CheckCharacter(3, characterList);
-        boolean shieldUserExists = java.lang.Character.CheckCharacter(4, characterList);
+        boolean healerExists = Character.CheckCharacter(1, characterList);
+        boolean marksmanExists = Character.CheckCharacter(2, characterList);
+        boolean swordsmanExists = Character.CheckCharacter(3, characterList);
+        boolean shieldUserExists = Character.CheckCharacter(4, characterList);
 
         // Then: Ensure that each type of character exists
         assertTrue(healerExists);
@@ -47,8 +47,8 @@ public class Test {
         // Given: An empty list of characters
 
         // When: Create a new character and add it to the list
-        List<java.lang.Character> characterList = new ArrayList<>();
-        java.lang.Character newCharacter = new Healer("NewHealer", 100, 50, 30);
+        List<Character> characterList = new ArrayList<>();
+        Character newCharacter = new Healer("NewHealer", 100, 50, 30);
         characterList.add(newCharacter);
 
         // Then: Ensure that the character is created correctly
@@ -63,15 +63,15 @@ public class Test {
     @org.junit.Test
     public void testTeamCreation() {
         // Given: A list with two different types of characters
-        List<java.lang.Character> characterList = new ArrayList<>();
-        java.lang.Character healer = new Healer("Healer1", 100, 50, 30);
-        java.lang.Character marksman = new Marksman("Marksman1", 120, 60, 40);
+        List<Character> characterList = new ArrayList<>();
+        Character healer = new Healer("Healer1", 100, 50, 30);
+        Character marksman = new Marksman("Marksman1", 120, 60, 40);
         characterList.add(healer);
         characterList.add(marksman);
 
         // When: Create a team using the characters
         String teamName = "Team1";
-        List<java.lang.Character> teamMembers = new ArrayList<>();
+        List<Character> teamMembers = new ArrayList<>();
         teamMembers.add(healer);
         teamMembers.add(marksman);
         Team team = Team.createTeam(teamName, teamMembers);
@@ -87,8 +87,8 @@ public class Test {
     @org.junit.Test // says contents are identical...
     public void testFileLoader() {
         // Initialize the characterList and teams
-        List<java.lang.Character> characterList = new ArrayList<>();
-        Map<String, List<java.lang.Character>> teams = new HashMap<>();
+        List<Character> characterList = new ArrayList<>();
+        Map<String, List<Character>> teams = new HashMap<>();
 
         // Provide the file to be loaded
         File file = new File("TeamFile");
@@ -97,13 +97,13 @@ public class Test {
         FileLoader.load(file, characterList, teams);
 
         // Provide the expected results
-        List<java.lang.Character> expectedCharacterList = new ArrayList<>();
-        expectedCharacterList.add(java.lang.Character.createFileCharacter("A", 1, 1, 1, CharacterType.HEALER));
-        expectedCharacterList.add(java.lang.Character.createFileCharacter("B", 2, 2, 2, CharacterType.MARKSMAN));
-        expectedCharacterList.add(java.lang.Character.createFileCharacter("C", 3, 3, 3, CharacterType.SWORDSMAN));
-        expectedCharacterList.add(java.lang.Character.createFileCharacter("D", 4, 4, 4, CharacterType.SHIELDUSER));
+        List<Character> expectedCharacterList = new ArrayList<>();
+        expectedCharacterList.add(Character.createFileCharacter("A", 1, 1, 1, CharacterType.HEALER));
+        expectedCharacterList.add(Character.createFileCharacter("B", 2, 2, 2, CharacterType.MARKSMAN));
+        expectedCharacterList.add(Character.createFileCharacter("C", 3, 3, 3, CharacterType.SWORDSMAN));
+        expectedCharacterList.add(Character.createFileCharacter("D", 4, 4, 4, CharacterType.SHIELDUSER));
 
-        Map<String, List<java.lang.Character>> expectedTeams = new HashMap<>();
+        Map<String, List<Character>> expectedTeams = new HashMap<>();
         expectedTeams.put("team", new ArrayList<>(expectedCharacterList)); // Assuming team has all characters
 
         // Check if the characterList and teams match the expected results
@@ -115,13 +115,13 @@ public class Test {
     @org.junit.Test
     public void testFileSaver() throws IOException {
         // Initialize the characterList and teams
-        List<java.lang.Character> characterList = new ArrayList<>();
-        characterList.add(java.lang.Character.createFileCharacter("A", 1, 1, 1, CharacterType.HEALER));
-        characterList.add(java.lang.Character.createFileCharacter("B", 2, 2, 2, CharacterType.MARKSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("C", 3, 3, 3, CharacterType.SWORDSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("D", 4, 4, 4, CharacterType.SHIELDUSER));
+        List<Character> characterList = new ArrayList<>();
+        characterList.add(Character.createFileCharacter("A", 1, 1, 1, CharacterType.HEALER));
+        characterList.add(Character.createFileCharacter("B", 2, 2, 2, CharacterType.MARKSMAN));
+        characterList.add(Character.createFileCharacter("C", 3, 3, 3, CharacterType.SWORDSMAN));
+        characterList.add(Character.createFileCharacter("D", 4, 4, 4, CharacterType.SHIELDUSER));
 
-        Map<String, List<java.lang.Character>> teams = new HashMap<>();
+        Map<String, List<Character>> teams = new HashMap<>();
         teams.put("team", new ArrayList<>(characterList)); // Assuming team has all characters
 
         // Create a temporary file
@@ -159,15 +159,15 @@ public class Test {
     }
     @org.junit.Test
     public void AskTopThreeAtk(){
-        ArrayList<java.lang.Character> characterList = new ArrayList<java.lang.Character>();
+        ArrayList<Character> characterList = new ArrayList<Character>();
         //The four lines below fill the characterlist with unique members
-        characterList.add(java.lang.Character.createFileCharacter("Bob", 2, 10, 2, CharacterType.HEALER));
-        characterList.add(java.lang.Character.createFileCharacter("John", 3, 2, 1, CharacterType.MARKSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("Amy", 5, 4, 7, CharacterType.SWORDSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("Amber", 6, 9, 0, CharacterType.SHIELDUSER));
+        characterList.add(Character.createFileCharacter("Bob", 2, 10, 2, CharacterType.HEALER));
+        characterList.add(Character.createFileCharacter("John", 3, 2, 1, CharacterType.MARKSMAN));
+        characterList.add(Character.createFileCharacter("Amy", 5, 4, 7, CharacterType.SWORDSMAN));
+        characterList.add(Character.createFileCharacter("Amber", 6, 9, 0, CharacterType.SHIELDUSER));
         HashMap<String, Integer> partyDamage = new HashMap<String, Integer>();
         // It goes through an arraylist filled with all the members of party, and gets each member's type and attack.
-        for (java.lang.Character member : characterList) {
+        for (Character member : characterList) {
             //  The type and attack of each member are stored as pairs in the partyDamage hashmap.
             partyDamage.put(member.getType().toString(), member.getAtk());
         }
@@ -206,14 +206,14 @@ public class Test {
     }
     @org.junit.Test
     public void HpAndDefLineup(){
-        ArrayList<java.lang.Character> characterList = new ArrayList<java.lang.Character>();
+        ArrayList<Character> characterList = new ArrayList<Character>();
         //The four lines below fill the characterlist with unique members
-        characterList.add(java.lang.Character.createFileCharacter("Tom", 8, 15, 8, CharacterType.HEALER));
-        characterList.add(java.lang.Character.createFileCharacter("Jerry", 2, 2, 2, CharacterType.MARKSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("Spike", 4, 0, 6, CharacterType.SWORDSMAN));
-        characterList.add(java.lang.Character.createFileCharacter("Guy", 4, 8, 19, CharacterType.SHIELDUSER));
-        HashMap<String, java.lang.Character> bestCharacters = new HashMap<String, java.lang.Character>();
-        for (java.lang.Character member : characterList) {
+        characterList.add(Character.createFileCharacter("Tom", 8, 15, 8, CharacterType.HEALER));
+        characterList.add(Character.createFileCharacter("Jerry", 2, 2, 2, CharacterType.MARKSMAN));
+        characterList.add(Character.createFileCharacter("Spike", 4, 0, 6, CharacterType.SWORDSMAN));
+        characterList.add(Character.createFileCharacter("Guy", 4, 8, 19, CharacterType.SHIELDUSER));
+        HashMap<String, Character> bestCharacters = new HashMap<String, Character>();
+        for (Character member : characterList) {
             String type = member.getType().toString();
             // iterates through each type
             if (!bestCharacters.containsKey(type) ||
@@ -224,13 +224,13 @@ public class Test {
         }
         // prints the recommended lineup
         StringBuilder lineupDetails = new StringBuilder("The recommended lineup is:\n");
-        for (java.lang.Character member : bestCharacters.values()) {
+        for (Character member : bestCharacters.values()) {
             lineupDetails.append(member.getType() + " named " + member.getName() + " with " + member.getHp() + " HP and " + member.getDef() + " DEF.\n");
         }
         StringBuilder expectedLineup = new StringBuilder("The recommended lineup is:\n");
         //The for loop below goes through all the members in bestCharacters and adds the corresponding line
         //to expectedLineup.
-        for (java.lang.Character member : bestCharacters.values()) {
+        for (Character member : bestCharacters.values()) {
             if (member.getType() == CharacterType.HEALER){
                 expectedLineup.append("HEALER" + " named " + "Tom" + " with " + 8 + " HP and " + 8 + " DEF.\n");
             }else if(member.getType() == CharacterType.MARKSMAN){
@@ -249,7 +249,7 @@ public class Test {
     public void CalculateDamage(){
         int finalDamage = 0;
         //The block of code below takes an example member, and calculates the damage they deal
-        java.lang.Character partyMemberType = java.lang.Character.createFileCharacter("Jerry", 2, 2, 2, CharacterType.MARKSMAN);
+        Character partyMemberType = Character.createFileCharacter("Jerry", 2, 2, 2, CharacterType.MARKSMAN);
         if (partyMemberType.getType() == CharacterType.HEALER){
             finalDamage = partyMemberType.getAtk();
         } else if (partyMemberType.getType() == CharacterType.SWORDSMAN){
