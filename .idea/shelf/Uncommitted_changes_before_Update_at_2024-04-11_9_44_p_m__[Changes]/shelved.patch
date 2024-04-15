@@ -1,0 +1,231 @@
+Index: src/main/java/ca/ucalgary/groupprojectgui/HelloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ca.ucalgary.groupprojectgui;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.input.MouseButton;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.stage.FileChooser;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.File;\r\nimport java.util.*;\r\n\r\npublic class HelloController {\r\n\r\n    private File file;\r\n    @FXML\r\n    private Button showBattleButton;\r\n\r\n    private Stage stage;\r\n\r\n    @FXML\r\n    private MenuItem load;\r\n\r\n    @FXML\r\n    private MenuItem save;\r\n\r\n    @FXML\r\n    private MenuItem quit;\r\n\r\n    @FXML\r\n    private MenuItem about;\r\n\r\n    @FXML\r\n    private TextField alertDisplay;\r\n    private List<Character> characterList = new ArrayList<>();\r\n    private Map<String, List<Character>> teams = new HashMap<>();\r\n\r\n    @FXML\r\n    private void initialize() {\r\n        createType.getItems().setAll(CharacterType.values());\r\n        editAttribute.getItems().setAll(\"Atk\", \"Def\", \"Hp\", \"Type\");\r\n    }\r\n\r\n    @FXML\r\n    private void handleLoad() {\r\n        // Create a file chooser\r\n        FileChooser fileChooser = new FileChooser();\r\n        fileChooser.setTitle(\"Open File\");\r\n        File selectedFile = fileChooser.showOpenDialog(stage);\r\n\r\n        if (selectedFile != null) {\r\n            // Call the FileLoader class's load method\r\n            FileLoader.load(selectedFile, characterList, teams);\r\n            alertDisplay.setText(\"File loaded successfully!\");\r\n            alertDisplay.setStyle(\"-fx-text-fill: blue;\");\r\n            this.file = selectedFile; // Set the file field\r\n\r\n            StringBuilder sb = new StringBuilder();\r\n            for (Character character : characterList) {\r\n                sb.append(character.toString());\r\n                sb.append(\"\\n\"); // for newline\r\n            }\r\n            aboutMember.setText(sb.toString());\r\n\r\n            StringBuilder st = new StringBuilder();\r\n            for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {\r\n                st.append(\"Team Name: \").append(entry.getKey()).append(\"\\n\");\r\n                st.append(\"Members: \\n\");\r\n                for (Character character : entry.getValue()) {\r\n                    st.append(character.toString()).append(\"\\n\");\r\n                }\r\n                st.append(\"\\n\");\r\n            }\r\n            aboutTeam.setText(st.toString());\r\n\r\n        } else {\r\n            // Show an error message if no file was selected\r\n            alertDisplay.setText(\"Failed to load file or invalid file format.\");\r\n            alertDisplay.setStyle(\"-fx-text-fill: red;\");\r\n\r\n        }\r\n\r\n    }\r\n\r\n    @FXML\r\n    public void handleSaveFile() {\r\n        if (teams != null && file != null && characterList != null) {\r\n            FileSaver.save(file, characterList, teams);\r\n            alertDisplay.setText(\"Success! File saved\");\r\n            alertDisplay.setStyle(\"-fx-text-fill: blue;\");\r\n        } else {\r\n            alertDisplay.setText(\"No file loaded to save. Please save new file.\");\r\n            alertDisplay.setStyle(\"-fx-text-fill: red\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    public void handleSaveAsFile() {\r\n        if (teams != null && file != null && characterList != null) {\r\n            FileChooser fileChooser = new FileChooser();\r\n            fileChooser.setTitle(\"Save File\");\r\n            File selectedFile = fileChooser.showSaveDialog(stage);\r\n            if (selectedFile != null) {\r\n                if (FileSaver.save(file, characterList, teams)) {\r\n                    alertDisplay.setText(\"Success! File Saved\");\r\n                    alertDisplay.setStyle(\"-fx-text-fill: blue;\");\r\n                    this.file = selectedFile;\r\n                }\r\n            }\r\n        } else {\r\n            alertDisplay.setText(\"Error! No game loaded to save.\");\r\n            alertDisplay.setStyle(\"-fx-text-fill: red;\");\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void handleQuit() {\r\n        System.exit(0);\r\n    }\r\n\r\n\r\n    @FXML\r\n    private void about() {\r\n        Alert alert = new Alert(Alert.AlertType.INFORMATION);\r\n        alert.setTitle(\"About\");\r\n        alert.setHeaderText(\"Message\");\r\n        alert.setContentText(\"Author: Nethanya Dhaiphule, Arfa Raja, Syed Omar\\nVersion: v1.0\\nThis is a ...description\");\r\n        alert.showAndWait();\r\n    }\r\n\r\n    // character attributes\r\n    @FXML\r\n    private TextField createName;\r\n    @FXML\r\n    private TextField createHp;\r\n    @FXML\r\n    private TextField createAtk;\r\n    @FXML\r\n    private TextField createDef;\r\n    @FXML\r\n    private ComboBox<CharacterType> createType;\r\n    @FXML\r\n    private Button createCharac;\r\n    @FXML\r\n    private TextArea aboutMember;\r\n\r\n    /**\r\n     * Create A Character\r\n     */\r\n    @FXML\r\n    private void createCharacter() {\r\n        String name = createName.getText();\r\n        int hp = Integer.parseInt(createHp.getText());\r\n        int atk = Integer.parseInt(createAtk.getText());\r\n        int def = Integer.parseInt(createDef.getText());\r\n        Character newCharacter = getCharacter(name, hp, atk, def);\r\n\r\n        // Check if character with the same name already exists\r\n        for (Character character : characterList) {\r\n            if (character.getName().equals(name)) {\r\n                aboutMember.setText(\"A character with this name already exists.\");\r\n                return;\r\n            }\r\n        }\r\n        characterList.add(newCharacter);\r\n        StringBuilder sb = new StringBuilder();\r\n        for (Character character : characterList) {\r\n            sb.append(character.toString());\r\n            sb.append(\"\\n\"); // for newline\r\n        }\r\n        aboutMember.setText(sb.toString());\r\n    }\r\n\r\n    private Character getCharacter(String name, int hp, int atk, int def) {\r\n        CharacterType type = createType.getValue();\r\n        return switch (type) {\r\n            // create HEALER object\r\n            case HEALER -> new Healer(name, hp, atk, def);\r\n\r\n            // create MARKSMAN object\r\n            case MARKSMAN -> new Marksman(name, hp, atk, def);\r\n\r\n            // create SWORDSMAN object\r\n            case SWORDSMAN -> new Swordsman(name, hp, atk, def);\r\n\r\n            // create SHIELDUSER object\r\n            case SHIELDUSER -> new ShieldUser(name, hp, atk, def);\r\n        };\r\n    }\r\n\r\n    @FXML\r\n    private TextField teamNameText;\r\n    @FXML\r\n    private TextField teamCharacText;\r\n    @FXML\r\n    private Button createTeamButton;\r\n    @FXML\r\n    private TextArea aboutTeam;\r\n\r\n    @FXML\r\n    private void createTeamGUI() {\r\n        String teamName = teamNameText.getText();\r\n        List<Character> team = new ArrayList<>();\r\n        String[] characterNames = teamCharacText.getText().split(\",\"); // split by comma\r\n        for (String characterName : characterNames) {\r\n            characterName = characterName.trim(); // remove leading and trailing spaces\r\n            for (Character character : characterList) {\r\n                if (character.getName().equals(characterName)) {\r\n                    team.add(character); // adds character to team list\r\n                }\r\n            }\r\n        }\r\n        Team newTeam = Team.createTeam(teamName, team); // creates a new Team object\r\n        teams.put(newTeam.getName(), newTeam.getMembers()); // adds team list to all teams hashmap\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n        for (Map.Entry<String, List<Character>> entry : teams.entrySet()) {\r\n            sb.append(\"Team Name: \").append(entry.getKey()).append(\"\\n\");\r\n            sb.append(\"Members: \\n\");\r\n            for (Character character : entry.getValue()) {\r\n                sb.append(character.toString()).append(\"\\n\");\r\n            }\r\n            sb.append(\"\\n\");\r\n        }\r\n        aboutTeam.setText(sb.toString());\r\n    }\r\n\r\n    @FXML\r\n    private TextField editName;\r\n    @FXML\r\n    private ComboBox<String> editAttribute;\r\n    @FXML\r\n    private TextField editNew;\r\n    @FXML\r\n    private Button editButton;\r\n\r\n    @FXML\r\n    private void editCharacterGUI() {\r\n        String name = editName.getText();\r\n        String attribute = editAttribute.getValue();\r\n        String newValue = editNew.getText();\r\n\r\n        for (Character character : characterList) {\r\n            if (character.getName().equals(name)) {\r\n                switch (attribute) {\r\n                    case \"Atk\":\r\n                        int newAtk = Integer.parseInt(newValue);\r\n                        character.setAtk(newAtk);\r\n                        aboutMember.setText(characterList.toString());\r\n                        aboutTeam.setText(teams.toString());\r\n                    case \"Def\":\r\n                        int newDef = Integer.parseInt(newValue);\r\n                        character.setDef(newDef);\r\n                        aboutMember.setText(characterList.toString());\r\n                        aboutTeam.setText(teams.toString());\r\n                    case \"Hp\":\r\n                        int newHp = Integer.parseInt(newValue);\r\n                        character.setHp(newHp);\r\n                        aboutMember.setText(characterList.toString());\r\n                        aboutTeam.setText(teams.toString());\r\n                    case \"Type\":\r\n                        character.setType(CharacterType.valueOf(newValue));\r\n                        aboutMember.setText(characterList.toString());\r\n                        aboutTeam.setText(teams.toString());\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private Button Top3Button;\r\n    @FXML\r\n    private TextArea topThreeAtk;\r\n\r\n    @FXML\r\n    private void topThree() {\r\n        String topThreeAtkDetails = Battlefield.AskTopThreeAtk((ArrayList<Character>) characterList);\r\n        topThreeAtk.setText(topThreeAtkDetails);\r\n    }\r\n\r\n    @FXML\r\n    private Button LineupButton;\r\n    @FXML\r\n    private TextArea lineup;\r\n\r\n    @FXML\r\n    private void lineup() {\r\n        String lineupDetails = Battlefield.HPAndDefLineup((ArrayList<Character>) characterList);\r\n        lineup.setText(lineupDetails);\r\n    }\r\n\r\n    @FXML\r\n    private Button BossButton;\r\n    @FXML\r\n    private TextArea bossAtk;\r\n\r\n    @FXML\r\n    private void boss() {\r\n        int bossAttack = Battlefield.CalculateBossAtk();\r\n        bossAtk.setText(\"The Boss Atk is \" + bossAttack);\r\n    }\r\n\r\n    @FXML\r\n    private Button DmgButton;\r\n    @FXML\r\n    private TextArea charDmg;\r\n\r\n    @FXML\r\n    private void damage() {\r\n        for (Character character : characterList) {\r\n            int w = Battlefield.CalculateDamage(character);\r\n            charDmg.setText(\"The Character Damage for is:\" + w);\r\n        }\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java b/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java
+--- a/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java	
++++ b/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java	
+@@ -298,7 +298,7 @@
+     @FXML
+     private void boss() {
+         int bossAttack = Battlefield.CalculateBossAtk();
+-        bossAtk.setText("The Boss Atk is " + bossAttack);
++        bossAtk.setText("The Boss Atk is: " + bossAttack);
+     }
+ 
+     @FXML
+@@ -310,7 +310,7 @@
+     private void damage() {
+         for (Character character : characterList) {
+             int w = Battlefield.CalculateDamage(character);
+-            charDmg.setText("The Character Damage for is:" + w);
++            charDmg.setText("The Character Damage for " + character.name + " is: " + w);
+         }
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7aca2f73-f17a-4991-86b0-3417932c9aed\" name=\"Changes\" comment=\"Try to make sure special methods work with GUI\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitLabMergeRequestFiltersHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPENED&quot;,\r\n    &quot;assignee&quot;: {\r\n      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,\r\n      &quot;username&quot;: &quot;project_4631_bot_90f8ca8b9a17ee6f160f1795e3eb51ea&quot;,\r\n      &quot;fullname&quot;: &quot;Demo3&quot;\r\n    }\r\n  }\r\n}</component>\r\n  <component name=\"GitLabMergeRequestsSettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"first\": \"https://csgit.ucalgary.ca/arfa.raja/groupprojectgui.git\",\r\n    \"second\": \"ffbbc4b7-7632-4e67-86f1-a79e3ed4c704\"\r\n  }\r\n}]]></component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2enFF1FpGI8funW0cocLmWunzMs\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Game.executor\": \"Run\",\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\AV\\Documents\\cpsc233\\GroupProjectGUI\\src\\main\\java\\ca\\ucalgary\\groupprojectgui\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.groupprojectgui.HelloApplication\" />\r\n      <module name=\"GroupProjectGUI\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ca.ucalgary.groupprojectgui.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7aca2f73-f17a-4991-86b0-3417932c9aed\" name=\"Changes\" comment=\"\" />\r\n      <created>1712532328529</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1712532328529</updated>\r\n      <workItem from=\"1712532329543\" duration=\"520000\" />\r\n      <workItem from=\"1712532858020\" duration=\"304000\" />\r\n      <workItem from=\"1712564462904\" duration=\"51000\" />\r\n      <workItem from=\"1712564521073\" duration=\"3521000\" />\r\n      <workItem from=\"1712617942677\" duration=\"1493000\" />\r\n      <workItem from=\"1712761998699\" duration=\"40000\" />\r\n      <workItem from=\"1712802083553\" duration=\"3626000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"initial commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712532459706</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712532459706</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"be able to create and view characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712567732452</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712567732452</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"be able to create and view characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712567799977</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712567799977</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"be able to create and view teams\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712618285677</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712618285677</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"be able to edit characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712619309712</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712619309712</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Try to make sure special methods work with GUI\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712854390871</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712854390871</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"initial commit\" />\r\n    <MESSAGE value=\"be able to create and view characters\" />\r\n    <MESSAGE value=\"be able to create and view teams\" />\r\n    <MESSAGE value=\"be able to edit characters\" />\r\n    <MESSAGE value=\"Try to make sure special methods work with GUI\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Try to make sure special methods work with GUI\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="Try to make sure special methods work with GUI">
++    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="run from command line and testFiles">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
+     </list>
+@@ -12,6 +12,13 @@
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+@@ -31,12 +38,12 @@
+     }
+   }
+ }</component>
+-  <component name="GitLabMergeRequestsSettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "first": "https://csgit.ucalgary.ca/arfa.raja/groupprojectgui.git",
+-    "second": "ffbbc4b7-7632-4e67-86f1-a79e3ed4c704"
++  <component name="GitLabMergeRequestsSettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui&quot;,
++    &quot;second&quot;: &quot;8f9e2b1e-1d91-4ff0-9fcd-93672002ec9c&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+@@ -53,54 +60,38 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Game.executor": "Run",
+-    "Application.HelloApplication.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "main",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Game.executor&quot;: &quot;Run&quot;,
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Shell.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI" />
+       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
+     </key>
+-  </component>
+-  <component name="RunManager">
+-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.HelloApplication" />
+-      <module name="GroupProjectGUI" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="Application.HelloApplication" />
+-      </list>
+-    </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
++        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
++        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -119,6 +110,10 @@
+       <workItem from="1712617942677" duration="1493000" />
+       <workItem from="1712761998699" duration="40000" />
+       <workItem from="1712802083553" duration="3626000" />
++      <workItem from="1712874358572" duration="486000" />
++      <workItem from="1712874858279" duration="1604000" />
++      <workItem from="1712876530043" duration="1072000" />
++      <workItem from="1712882026967" duration="660000" />
+     </task>
+     <task id="LOCAL-00001" summary="initial commit">
+       <option name="closed" value="true" />
+@@ -168,7 +163,47 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712854390871</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="edit gui">
++      <option name="closed" value="true" />
++      <created>1712870307510</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1712870307510</updated>
++    </task>
++    <task id="LOCAL-00008" summary="debugging">
++      <option name="closed" value="true" />
++      <created>1712873403403</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1712873403403</updated>
++    </task>
++    <task id="LOCAL-00009" summary="name check for characters">
++      <option name="closed" value="true" />
++      <created>1712874259420</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1712874259420</updated>
++    </task>
++    <task id="LOCAL-00010" summary="display Load members and teams">
++      <option name="closed" value="true" />
++      <created>1712876072973</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1712876072973</updated>
++    </task>
++    <task id="LOCAL-00011" summary="run from command line and testFiles">
++      <option name="closed" value="true" />
++      <created>1712877525304</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1712877525304</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -191,6 +226,11 @@
+     <MESSAGE value="be able to create and view teams" />
+     <MESSAGE value="be able to edit characters" />
+     <MESSAGE value="Try to make sure special methods work with GUI" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Try to make sure special methods work with GUI" />
++    <MESSAGE value="edit gui" />
++    <MESSAGE value="debugging" />
++    <MESSAGE value="name check for characters" />
++    <MESSAGE value="display Load members and teams" />
++    <MESSAGE value="run from command line and testFiles" />
++    <option name="LAST_COMMIT_MESSAGE" value="run from command line and testFiles" />
+   </component>
+ </project>
+\ No newline at end of file

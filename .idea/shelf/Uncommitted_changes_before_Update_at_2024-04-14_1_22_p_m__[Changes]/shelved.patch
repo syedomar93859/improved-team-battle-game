@@ -1,0 +1,178 @@
+Index: .idea/runConfigurations/Shell.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"ProjectRunConfigurationManager\">\r\n  <configuration default=\"false\" name=\"Shell\" type=\"Application\" factoryName=\"Application\">\r\n    <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.groupprojectgui.Shell\" />\r\n    <module name=\"GroupProjectGUI\" />\r\n    <option name=\"PROGRAM_PARAMETERS\" value=\"testFile\" />\r\n    <extension name=\"coverage\">\r\n      <pattern>\r\n        <option name=\"PATTERN\" value=\"ca.ucalgary.groupprojectgui.*\" />\r\n        <option name=\"ENABLED\" value=\"true\" />\r\n      </pattern>\r\n    </extension>\r\n    <method v=\"2\">\r\n      <option name=\"Make\" enabled=\"true\" />\r\n    </method>\r\n  </configuration>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations/Shell.xml b/.idea/runConfigurations/Shell.xml
+--- a/.idea/runConfigurations/Shell.xml	(revision e4bd54a63dc7f650ecd044869ab493bf8d622343)
++++ b/.idea/runConfigurations/Shell.xml	(date 1712955704010)
+@@ -5,7 +5,7 @@
+     <option name="PROGRAM_PARAMETERS" value="testFile" />
+     <extension name="coverage">
+       <pattern>
+-        <option name="PATTERN" value="ca.ucalgary.groupprojectgui.*" />
++        <option name="PATTERN" value=".*" />
+         <option name="ENABLED" value="true" />
+       </pattern>
+     </extension>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7aca2f73-f17a-4991-86b0-3417932c9aed\" name=\"Changes\" comment=\"commit\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/runConfigurations/App.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/runConfigurations/Shell.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"GitLabMergeRequestFiltersHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPENED&quot;,\r\n    &quot;assignee&quot;: {\r\n      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,\r\n      &quot;username&quot;: &quot;project_4631_bot_90f8ca8b9a17ee6f160f1795e3eb51ea&quot;,\r\n      &quot;fullname&quot;: &quot;Demo3&quot;\r\n    }\r\n  }\r\n}</component>\r\n  <component name=\"GitLabMergeRequestsSettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/arfa.raja/groupprojectgui&quot;,\r\n    &quot;second&quot;: &quot;8f9e2b1e-1d91-4ff0-9fcd-93672002ec9c&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n    &quot;associatedIndex&quot;: 7\r\n    }</component>\r\n  <component name=\"ProjectId\" id=\"2enFF1FpGI8funW0cocLmWunzMs\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.App.executor\": \"Run\",\r\n    \"Application.Game.executor\": \"Run\",\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"Application.Shell.executor\": \"Run\",\r\n    \"Application.TerminalMain.executor\": \"Run\",\r\n    \"Application.ca.ucalgary.groupprojectgui.Shell.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/AV/Documents/cpsc233/GroupProjectGUI/target/classes\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"preferences.JavaFX\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\AV\\Documents\\cpsc233\\GroupProjectGUI\\target\\classes\" />\r\n      <recent name=\"C:\\Users\\AV\\Documents\\cpsc233\\GroupProjectGUI\\src\\main\\java\\ca\\ucalgary\\groupprojectgui\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Shell\">\r\n    <configuration name=\"Shell\" type=\"Application\" factoryName=\"Application\" temporary=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ca.ucalgary.groupprojectgui.TerminalMain\" />\r\n      <module name=\"GroupProjectGUI\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"testFile\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ca.ucalgary.groupprojectgui.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.App\" />\r\n        <item itemvalue=\"Application.Shell\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7aca2f73-f17a-4991-86b0-3417932c9aed\" name=\"Changes\" comment=\"\" />\r\n      <created>1712532328529</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1712532328529</updated>\r\n      <workItem from=\"1712532329543\" duration=\"520000\" />\r\n      <workItem from=\"1712532858020\" duration=\"304000\" />\r\n      <workItem from=\"1712564462904\" duration=\"51000\" />\r\n      <workItem from=\"1712564521073\" duration=\"3521000\" />\r\n      <workItem from=\"1712617942677\" duration=\"1493000\" />\r\n      <workItem from=\"1712761998699\" duration=\"40000\" />\r\n      <workItem from=\"1712802083553\" duration=\"3626000\" />\r\n      <workItem from=\"1712896921124\" duration=\"1959000\" />\r\n      <workItem from=\"1712898922918\" duration=\"132000\" />\r\n      <workItem from=\"1712899124515\" duration=\"167000\" />\r\n      <workItem from=\"1712899316695\" duration=\"19000\" />\r\n      <workItem from=\"1712899342289\" duration=\"2095000\" />\r\n      <workItem from=\"1712901494407\" duration=\"320000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"initial commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712532459706</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712532459706</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"be able to create and view characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712567732452</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712567732452</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"be able to create and view characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712567799977</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712567799977</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"be able to create and view teams\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712618285677</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712618285677</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"be able to edit characters\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712619309712</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712619309712</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Try to make sure special methods work with GUI\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712854390871</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712854390871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"fixed error\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712892673292</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712892673292</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712892757165</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712892757165</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"initial commit\" />\r\n    <MESSAGE value=\"be able to create and view characters\" />\r\n    <MESSAGE value=\"be able to create and view teams\" />\r\n    <MESSAGE value=\"be able to edit characters\" />\r\n    <MESSAGE value=\"Try to make sure special methods work with GUI\" />\r\n    <MESSAGE value=\"fixed error\" />\r\n    <MESSAGE value=\"commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e4bd54a63dc7f650ecd044869ab493bf8d622343)
++++ b/.idea/workspace.xml	(date 1712965073240)
+@@ -5,11 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="commit">
+-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/App.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Shell.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Shell.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Shell.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloApplication.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/HelloController.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -59,37 +56,52 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.App.executor": "Run",
+-    "Application.Game.executor": "Run",
+-    "Application.HelloApplication.executor": "Run",
+-    "Application.Shell.executor": "Run",
+-    "Application.TerminalMain.executor": "Run",
+-    "Application.ca.ucalgary.groupprojectgui.Shell.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "main",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/AV/Documents/cpsc233/GroupProjectGUI/target/classes",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "preferences.JavaFX",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.App.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Game.executor&quot;: &quot;Run&quot;,
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Shell.executor&quot;: &quot;Run&quot;,
++    &quot;Application.TerminalMain.executor&quot;: &quot;Run&quot;,
++    &quot;Application.ca.ucalgary.groupprojectgui.Shell.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.Tests.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_directory_selection&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/test&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\target\classes" />
+-      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java" />
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI" />
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\test\ca\ucalgary\groupprojectgui" />
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\resources\ca\ucalgary\groupprojectgui" />
++      <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main" />
++    </key>
++    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
++      <recent name="" />
++    </key>
++    <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="ca.ucalgary.groupprojectgui" />
++      <recent name="Tests" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Shell">
++  <component name="RunManager" selected="JUnit.Tests">
+     <configuration name="Shell" type="Application" factoryName="Application" temporary="true">
+       <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.TerminalMain" />
+       <module name="GroupProjectGUI" />
+@@ -104,9 +116,18 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="GroupProjectGUI" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="Tests" />
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.App" />
++        <item itemvalue="JUnit.Tests" />
+         <item itemvalue="Application.Shell" />
+       </list>
+     </recent_temporary>
+@@ -140,6 +161,9 @@
+       <workItem from="1712899316695" duration="19000" />
+       <workItem from="1712899342289" duration="2095000" />
+       <workItem from="1712901494407" duration="320000" />
++      <workItem from="1712955311012" duration="1093000" />
++      <workItem from="1712956446661" duration="43000" />
++      <workItem from="1712963732866" duration="1328000" />
+     </task>
+     <task id="LOCAL-00001" summary="initial commit">
+       <option name="closed" value="true" />
+@@ -205,7 +229,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712892757165</updated>
+     </task>
+-    <option name="localTasksCounter" value="9" />
++    <task id="LOCAL-00009" summary="command line">
++      <option name="closed" value="true" />
++      <created>1712954578466</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1712954578466</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -230,7 +262,8 @@
+     <MESSAGE value="Try to make sure special methods work with GUI" />
+     <MESSAGE value="fixed error" />
+     <MESSAGE value="commit" />
+-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
++    <MESSAGE value="command line" />
++    <option name="LAST_COMMIT_MESSAGE" value="command line" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />
