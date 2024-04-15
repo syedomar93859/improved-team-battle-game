@@ -1,4 +1,6 @@
 # CPSC 233 W24 A3
+# Authors: Arfa Raja, Nethanya Dhaipule, Syed Omar
+
 # Party Creation and Battle Analyzer
 
 The code and scenebuilder GUI work together to create a party from the details 
@@ -15,8 +17,16 @@ details about it such as:
 - Calculate the boss's atk
 
 
-#How to run:
+# How to run:
 
-open in - GroupProjectGUI\target\classes
+From Shell:
 
-then run -java --module-path  "C:\Program Files\Java\javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml ca.ucalgary.groupprojectgui.Shell testFile
+ - open in: GroupProjectGUI\target\classes
+ - run: java --module-path  "C:\Program Files\Java\javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml ca.ucalgary.groupprojectgui.Shell testFile
+
+
+Jar file:
+ - open in: GroupProjectGUI
+ - run: java --module-path  "C:\Program Files\Java\javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml -jar GroupProjectGUI.jar
+
+
