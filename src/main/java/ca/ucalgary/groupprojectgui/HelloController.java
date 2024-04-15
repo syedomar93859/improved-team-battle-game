@@ -142,7 +142,7 @@ public class HelloController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("Message");
-        alert.setContentText("Author: Nethanya Dhaiphule, Arfa Raja, Syed Omar\nVersion: v1.0\nThis is a program to track information about party characters and teams.");
+        alert.setContentText("Authors: Nethanya Dhaiphule, Arfa Raja, Syed Omar\nVersion: v1.0\nThis is a program to track information about party\ncharacters and teams.");
         alert.showAndWait();
     }
 
