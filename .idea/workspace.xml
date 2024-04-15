@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="fix editCharacter">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/ucalgary/groupprojectgui/Test.java" afterDir="false" />
+    <list default="true" id="7aca2f73-f17a-4991-86b0-3417932c9aed" name="Changes" comment="test run config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,57 +55,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.Game.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Shell.executor": "Run",
-    "Application.TerminalMain.executor": "Run",
-    "Application.ca.ucalgary.groupprojectgui.Shell.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Game.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Shell.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TerminalMain.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ca.ucalgary.groupprojectgui.Shell.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AV/Documents/cpsc233/GroupProjectGUI/src/main/java/ca/ucalgary/groupprojectgui&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\src\main\java\ca\ucalgary\groupprojectgui" />
       <recent name="C:\Users\AV\Documents\cpsc233\GroupProjectGUI\target\classes" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Test">
-    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GroupProjectGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ca.ucalgary.groupprojectgui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ca.ucalgary.groupprojectgui" />
-      <option name="MAIN_CLASS_NAME" value="ca.ucalgary.groupprojectgui.Test" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.Test" />
-      </list>
-    </recent_temporary>
+  <component name="RunManager" selected="Application.App">
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.Shell" />
+      <item itemvalue="JUnit.Test" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -139,7 +122,14 @@
       <workItem from="1712899316695" duration="19000" />
       <workItem from="1712899342289" duration="2095000" />
       <workItem from="1712901494407" duration="320000" />
-      <workItem from="1713154189458" duration="370000" />
+      <workItem from="1713154189458" duration="612000" />
+      <workItem from="1713154823202" duration="93000" />
+      <workItem from="1713163144403" duration="3000" />
+      <workItem from="1713163264638" duration="595000" />
+      <workItem from="1713206273972" duration="1348000" />
+      <workItem from="1713207836785" duration="53000" />
+      <workItem from="1713208020081" duration="192000" />
+      <workItem from="1713209888151" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -213,7 +203,47 @@
       <option name="project" value="LOCAL" />
       <updated>1713123187382</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add tests file">
+      <option name="closed" value="true" />
+      <created>1713154579105</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713154579106</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix tests file">
+      <option name="closed" value="true" />
+      <created>1713154705230</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713154705230</updated>
+    </task>
+    <task id="LOCAL-00012" summary="comments">
+      <option name="closed" value="true" />
+      <created>1713207627194</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713207627194</updated>
+    </task>
+    <task id="LOCAL-00013" summary="formatting">
+      <option name="closed" value="true" />
+      <created>1713208156158</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713208156158</updated>
+    </task>
+    <task id="LOCAL-00014" summary="test run config">
+      <option name="closed" value="true" />
+      <created>1713208208391</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713208208391</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +269,12 @@
     <MESSAGE value="fixed error" />
     <MESSAGE value="commit" />
     <MESSAGE value="fix editCharacter" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix editCharacter" />
+    <MESSAGE value="add tests file" />
+    <MESSAGE value="fix tests file" />
+    <MESSAGE value="comments" />
+    <MESSAGE value="formatting" />
+    <MESSAGE value="test run config" />
+    <option name="LAST_COMMIT_MESSAGE" value="test run config" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

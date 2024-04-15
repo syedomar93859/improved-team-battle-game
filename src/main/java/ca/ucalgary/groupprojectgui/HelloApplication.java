@@ -18,7 +18,7 @@ import java.util.List;
 public class HelloApplication extends Application {
 
     /**
-     * The main method of the application.
+     * The start method of the application.
      *
      * @param stage the initial stage to be set
      */
@@ -33,9 +33,11 @@ public class HelloApplication extends Application {
         // Get the file path from the application parameters
         Parameters params = getParameters();
         List<String> args = params.getRaw();
+
+        // if there is an argument, run Shell.main()
         if (!args.isEmpty()) {
             // Load the file
-            HelloController controller = (HelloController) fxmlLoader.getController();
+            HelloController controller = fxmlLoader.getController();
             File testFile = new File(args.get(0));
             controller.shellLoad(testFile);
         }
@@ -43,10 +45,11 @@ public class HelloApplication extends Application {
     /**
      * Allows main to run from IDE
      *
-     * @param args Command-line arguments.
+     * @param args IDE arguments.
      */
     public static void main(String[] args) {
         Application.launch(args);
+
     }
 }
 
